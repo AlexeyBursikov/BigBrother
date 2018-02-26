@@ -1,6 +1,6 @@
 #include "ofApp.h"
 #include "config/Config.h"
-#include "interface/BigBrotherInterfaceLayout.h"
+#include "interface/TestKinectInterfaceLayout.h"
 #include "tracker/KinectTracker.h"
 
 using namespace bbrother;
@@ -12,15 +12,15 @@ void ofApp::setup()
 	ofAddListener(config->loadCompleteEvent, this, &ofApp::onConfigLoadComplete);
 
 #ifdef DEBUG_VERSION	
-	interfaceLayout = InterfaceLayoutPtr(new BigBrotherInterfaceLayout());
-	ofAddListener(interfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
+	testInterfaceLayout = TestInterfaceLayoutPtr(new TestKinectInterfaceLayout());
+	ofAddListener(testInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
 #endif
 
 	tracker = bbrother::TrackerPtr(new KinectTracker());
 
 	//facedetector = bbrother::FaceDetectorPtr(new FacePlusPlusDetector());
 
-	artDrawer = bbrother::ArtDrawerPtr(new ArtDrawer());
+	mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
 
 	//printerWorker = bbrother::PrinterWorkerPtr(new PrinterWorker());	
 	//tcpController = TcpControllerPtr(new TcpController());
@@ -51,13 +51,13 @@ void ofApp::onInterfaceEvent(bbrother::InterfaceEventType& Event)
 void ofApp::update()
 {
 	tracker->update();
-	artDrawer->update();
+	mainUI->update();
 
 	/*schedule->update();
 	soundManager->update();*/
 
 #ifdef DEBUG_VERSION
-	interfaceLayout->update();
+	testInterfaceLayout->update();
 #endif
 }
 
@@ -65,11 +65,11 @@ void ofApp::update()
 void ofApp::draw()
 {
 	tracker->draw();
-	artDrawer->draw();
+	mainUI->draw();
 
 #ifdef DEBUG_VERSION
 	// on top level
-	interfaceLayout->draw();
+	testInterfaceLayout->draw();
 #endif
 }
 

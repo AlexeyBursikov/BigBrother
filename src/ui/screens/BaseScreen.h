@@ -3,16 +3,16 @@
 
 namespace bbrother
 {
-	typedef ofPtr<class ArtDrawer> ArtDrawerPtr;
+	typedef ofPtr<class BaseScreen> BaseScreenPtr;
 
-	class ArtDrawer
+	class BaseScreen
 	{
 	public:
-		ArtDrawer();
+		BaseScreen();
 		virtual void update();
 		virtual void draw();
 
-		virtual ~ArtDrawer();
+		virtual ~BaseScreen();
 	};
 }
 

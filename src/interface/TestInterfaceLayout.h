@@ -11,18 +11,18 @@ namespace bbrother
 		TryDetectHuman
 	};
 
-	typedef ofPtr<class InterfaceLayout> InterfaceLayoutPtr;
+	typedef ofPtr<class TestInterfaceLayout> TestInterfaceLayoutPtr;
 
-	class InterfaceLayout
+	class TestInterfaceLayout
 	{
 	public:
-		InterfaceLayout();
+		TestInterfaceLayout();
 
 		ofEvent<InterfaceEventType> InterfaceEvent;
 
 		virtual void update() = 0;
 		virtual void draw() = 0;
-		virtual ~InterfaceLayout();
+		virtual ~TestInterfaceLayout();
 
 	private:
 		// arts vector

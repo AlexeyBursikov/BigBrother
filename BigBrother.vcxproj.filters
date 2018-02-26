@@ -16,15 +16,6 @@
     <ClCompile Include="src\tracker\Tracker.cpp">
       <Filter>src\tracker</Filter>
     </ClCompile>
-    <ClCompile Include="src\interface\BigBrotherInterfaceLayout.cpp">
-      <Filter>src\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\interface\InterfaceLayout.cpp">
-      <Filter>src\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\art\ArtDrawer.cpp">
-      <Filter>src\art</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp">
       <Filter>addons\ofxDatGui\src</Filter>
     </ClCompile>
@@ -33,6 +24,21 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp">
       <Filter>addons\ofxDatGui\src\libs\ofxSmartFont</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\TestInterfaceLayout.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\TestKinectInterfaceLayout.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\MainAppUIHolder.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\screens\BaseScreen.cpp">
+      <Filter>src\ui\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\screens\WaitScreen.cpp">
+      <Filter>src\ui\screens</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,12 +50,6 @@
     </Filter>
     <Filter Include="src\tracker">
       <UniqueIdentifier>{d27a5365-cd4e-484c-952c-aa527611ed2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\interface">
-      <UniqueIdentifier>{f6fe42af-6654-43e4-8d06-803e23863d03}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\art">
-      <UniqueIdentifier>{4a81a52c-02b2-4409-b9bf-dd79fb414d04}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons">
       <UniqueIdentifier>{98830103-1a80-4a82-8ed1-70dbeb850358}</UniqueIdentifier>
@@ -75,6 +75,15 @@
     <Filter Include="addons\ofxDatGui\src\themes">
       <UniqueIdentifier>{ff0391a3-73dc-47e1-91d3-2dab52a97ea4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\interface">
+      <UniqueIdentifier>{aefd5843-d747-4882-b2c6-8202fb9766a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui">
+      <UniqueIdentifier>{34ca6391-ba3d-4a2b-9eda-c89cbe58bd13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\screens">
+      <UniqueIdentifier>{f15650be-88eb-4de6-9f17-98ba5ce7cae4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
@@ -88,15 +97,6 @@
     </ClInclude>
     <ClInclude Include="src\tracker\Tracker.h">
       <Filter>src\tracker</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interface\BigBrotherInterfaceLayout.h">
-      <Filter>src\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interface\InterfaceLayout.h">
-      <Filter>src\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\art\ArtDrawer.h">
-      <Filter>src\art</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.h">
       <Filter>addons\ofxDatGui\src</Filter>
@@ -160,6 +160,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interface\TestInterfaceLayout.h">
+      <Filter>src\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interface\TestKinectInterfaceLayout.h">
+      <Filter>src\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ui\MainAppUIHolder.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ui\screens\BaseScreen.h">
+      <Filter>src\ui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ui\screens\WaitScreen.h">
+      <Filter>src\ui\screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -194,14 +194,16 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp" />
-    <ClCompile Include="src\art\ArtDrawer.cpp" />
     <ClCompile Include="src\config\Config.cpp" />
-    <ClCompile Include="src\interface\BigBrotherInterfaceLayout.cpp" />
-    <ClCompile Include="src\interface\InterfaceLayout.cpp" />
+    <ClCompile Include="src\interface\TestInterfaceLayout.cpp" />
+    <ClCompile Include="src\interface\TestKinectInterfaceLayout.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\tracker\KinectTracker.cpp" />
     <ClCompile Include="src\tracker\Tracker.cpp" />
+    <ClCompile Include="src\ui\MainAppUIHolder.cpp" />
+    <ClCompile Include="src\ui\screens\BaseScreen.cpp" />
+    <ClCompile Include="src\ui\screens\WaitScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\components\ofxDatGui2dPad.h" />
@@ -225,13 +227,15 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
-    <ClInclude Include="src\art\ArtDrawer.h" />
     <ClInclude Include="src\config\Config.h" />
-    <ClInclude Include="src\interface\BigBrotherInterfaceLayout.h" />
-    <ClInclude Include="src\interface\InterfaceLayout.h" />
+    <ClInclude Include="src\interface\TestInterfaceLayout.h" />
+    <ClInclude Include="src\interface\TestKinectInterfaceLayout.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\tracker\KinectTracker.h" />
     <ClInclude Include="src\tracker\Tracker.h" />
+    <ClInclude Include="src\ui\MainAppUIHolder.h" />
+    <ClInclude Include="src\ui\screens\BaseScreen.h" />
+    <ClInclude Include="src\ui\screens\WaitScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

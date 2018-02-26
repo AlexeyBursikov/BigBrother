@@ -1,20 +1,20 @@
 #pragma once
 #include "ofMain.h"
-#include "InterfaceLayout.h"
+#include "TestInterfaceLayout.h"
 #include "ofxDatGui.h"
 
 namespace bbrother
 {
-	typedef ofPtr<class BigBrotherInterfaceLayout> BigBrotherInterfaceLayoutPtr;
+	typedef ofPtr<class TestKinectInterfaceLayout> TestKinectInterfaceLayoutPtr;
 
-	class BigBrotherInterfaceLayout : public InterfaceLayout
+	class TestKinectInterfaceLayout : public TestInterfaceLayout
 	{
 	public:
-		BigBrotherInterfaceLayout();
+		TestKinectInterfaceLayout();
 
 		virtual void update();
 		virtual void draw();
-		virtual ~BigBrotherInterfaceLayout();
+		virtual ~TestKinectInterfaceLayout();
 
 	private:
 		ofPtr<ofxDatGuiButton> kinectStartButton;

@@ -1,19 +1,19 @@
-#include "ArtDrawer.h"
+#include "WaitScreen.h"
 
 using namespace bbrother;
 
-ArtDrawer::ArtDrawer()
+WaitScreen::WaitScreen()
 {
-	ofLog(ofLogLevel::OF_LOG_NOTICE, "Art Drawer init");
+	ofLog(ofLogLevel::OF_LOG_NOTICE, "Wait Screen init");	
 
 }
 
-void ArtDrawer::update()
+void WaitScreen::update()
 {
 	
 }
 
-void ArtDrawer::draw()
+void WaitScreen::draw()
 {
 	ofSetColor(ofFloatColor(1, 0, 0));
 
@@ -32,7 +32,7 @@ void ArtDrawer::draw()
 	line.draw();
 }
 
-ArtDrawer::~ArtDrawer()
+WaitScreen::~WaitScreen()
 {
 
 }
