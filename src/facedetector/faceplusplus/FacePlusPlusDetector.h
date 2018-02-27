@@ -14,15 +14,18 @@ namespace bbrother
 	{
 	public:
 		FacePlusPlusDetector();
+		virtual void init(ConfigPtr config) override;
 		virtual ~FacePlusPlusDetector();
 
 	private:
 		Face face;
-
 		ofxHttpUtils httpUtils;
-		void makeRequest();
-		void newResponse(ofxHttpResponse & response);
-		
+		void makeRequest(const string& FACE_URL, const string& API_KEY, const string& API_SECRET, const string& filePath);
+		void newResponse(ofxHttpResponse & response);	
+
+		string FACE_URL;
+		string API_KEY;
+		string API_SECRET;
 	};
 }
 

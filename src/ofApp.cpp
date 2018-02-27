@@ -41,6 +41,8 @@ void ofApp::onConfigLoadComplete()
 {
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Config load complete");
 
+	facedetector->init(config);
+
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Start application...");
 }
 
