@@ -11,7 +11,8 @@ namespace bbrother
 		Config();
 
 		ofEvent<void> loadCompleteEvent;
-
+		ofEvent<void> loadErrorEvent;
+		
 		virtual void load();
 
 		virtual ~Config();

@@ -4,7 +4,7 @@ using namespace bbrother;
 
 TestKinectInterfaceLayout::TestKinectInterfaceLayout()
 {
-	ofLog(ofLogLevel::OF_LOG_NOTICE, "IFish InterfaceLayout init");
+	ofLog(ofLogLevel::OF_LOG_NOTICE, "BigBrother InterfaceLayout init");
 	
 	kinectStartButton = ofPtr<ofxDatGuiButton>(new ofxDatGuiButton("Kinect Start"));
 	kinectStartButton->onButtonEvent(this, &TestKinectInterfaceLayout::kinectStartButtonClicked);	
