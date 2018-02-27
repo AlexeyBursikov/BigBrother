@@ -55,6 +55,15 @@
     <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusTypes.cpp">
       <Filter>src\facedetector\faceplusplus</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp">
+      <Filter>addons\ofxJSON\libs\jsoncpp\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools\http\ofxHttpUtils.cpp">
+      <Filter>src\tools\http</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -107,6 +116,33 @@
     </Filter>
     <Filter Include="src\facedetector\faceplusplus">
       <UniqueIdentifier>{0abb525e-111e-41a4-aab0-c2449f12b410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON">
+      <UniqueIdentifier>{59bf7229-6da5-46db-926e-f9aadad67f3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\src">
+      <UniqueIdentifier>{68b89de3-ba67-4b79-9b52-b361fc2d19c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs">
+      <UniqueIdentifier>{dd4e60d6-1b4b-42a7-9caf-acc1ef257d02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp">
+      <UniqueIdentifier>{fafb5205-f4c9-4249-93ed-e6984efb96a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\include">
+      <UniqueIdentifier>{47076737-9666-466d-b19c-f0274b06e407}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\include\json">
+      <UniqueIdentifier>{47f6393c-eb6f-44eb-a3e8-d07216861fe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxJSON\libs\jsoncpp\src">
+      <UniqueIdentifier>{e930dc29-23d5-4443-bb2b-a2b5333985d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tools">
+      <UniqueIdentifier>{8cab577f-b683-4c76-a9c2-d8891bebfdd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\tools\http">
+      <UniqueIdentifier>{f321bc62-7229-47f3-afb4-828bf3cb5440}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +250,24 @@
     </ClInclude>
     <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusTypes.h">
       <Filter>src\facedetector\faceplusplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h">
+      <Filter>addons\ofxJSON\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h">
+      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h">
+      <Filter>addons\ofxJSON\libs\jsoncpp\include\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\http\ofxHttpTypes.h">
+      <Filter>src\tools\http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\http\ofxHttpUtils.h">
+      <Filter>src\tools\http</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

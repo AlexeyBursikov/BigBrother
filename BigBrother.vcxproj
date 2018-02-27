@@ -96,13 +96,10 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\src;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -121,13 +118,10 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\src;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -145,13 +139,10 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\src;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -171,13 +162,10 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <CompileAs>CompileAsCpp</CompileAs>
-      <AdditionalIncludeDirectories>
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;
-C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\components;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\core;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\libs\ofxSmartFont;C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\src;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include;
+c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\include\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -194,6 +182,8 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\core\ofxDatGuiComponent.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\libs\jsoncpp\src\jsoncpp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.cpp" />
     <ClCompile Include="src\config\Config.cpp" />
     <ClCompile Include="src\facedetector\FaceDetector.cpp" />
     <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusDetector.cpp" />
@@ -204,6 +194,7 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\person\Person.cpp" />
+    <ClCompile Include="src\tools\http\ofxHttpUtils.cpp" />
     <ClCompile Include="src\tracker\KinectTracker.cpp" />
     <ClCompile Include="src\tracker\Tracker.cpp" />
     <ClCompile Include="src\ui\MainAppUIHolder.cpp" />
@@ -232,6 +223,10 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json-forwards.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\libs\jsoncpp\include\json\json.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSON.h" />
+    <ClInclude Include="..\..\..\addons\ofxJSON\src\ofxJSONElement.h" />
     <ClInclude Include="src\config\Config.h" />
     <ClInclude Include="src\facedetector\FaceDetector.h" />
     <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusDetector.h" />
@@ -241,6 +236,8 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClInclude Include="src\interface\TestMainUIInterfaceLayout.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\person\Person.h" />
+    <ClInclude Include="src\tools\http\ofxHttpTypes.h" />
+    <ClInclude Include="src\tools\http\ofxHttpUtils.h" />
     <ClInclude Include="src\tracker\KinectTracker.h" />
     <ClInclude Include="src\tracker\Tracker.h" />
     <ClInclude Include="src\ui\MainAppUIHolder.h" />
