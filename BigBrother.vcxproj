@@ -195,10 +195,13 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp" />
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\ofxDatGui.cpp" />
     <ClCompile Include="src\config\Config.cpp" />
+    <ClCompile Include="src\facedetector\FaceDetector.cpp" />
+    <ClCompile Include="src\facedetector\FacePlusPlusDetector.cpp" />
     <ClCompile Include="src\interface\TestInterfaceLayout.cpp" />
     <ClCompile Include="src\interface\TestKinectInterfaceLayout.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\person\Person.cpp" />
     <ClCompile Include="src\tracker\KinectTracker.cpp" />
     <ClCompile Include="src\tracker\Tracker.cpp" />
     <ClCompile Include="src\ui\MainAppUIHolder.cpp" />
@@ -228,9 +231,12 @@ C:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxDatGui\src\themes;%(Ad
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiTheme.h" />
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h" />
     <ClInclude Include="src\config\Config.h" />
+    <ClInclude Include="src\facedetector\FaceDetector.h" />
+    <ClInclude Include="src\facedetector\FacePlusPlusDetector.h" />
     <ClInclude Include="src\interface\TestInterfaceLayout.h" />
     <ClInclude Include="src\interface\TestKinectInterfaceLayout.h" />
     <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\person\Person.h" />
     <ClInclude Include="src\tracker\KinectTracker.h" />
     <ClInclude Include="src\tracker\Tracker.h" />
     <ClInclude Include="src\ui\MainAppUIHolder.h" />

@@ -20,6 +20,16 @@ void KinectTracker::draw()
 
 }
 
+void KinectTracker::start()
+{
+
+}
+
+void KinectTracker::stop()
+{
+
+}
+
 KinectTracker::~KinectTracker()
 {
 

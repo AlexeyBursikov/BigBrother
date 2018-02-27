@@ -40,6 +40,15 @@
     <ClCompile Include="src\ui\screens\WaitScreen.cpp">
       <Filter>src\ui\screens</Filter>
     </ClCompile>
+    <ClCompile Include="src\facedetector\FaceDetector.cpp">
+      <Filter>src\facedetector</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\FacePlusPlusDetector.cpp">
+      <Filter>src\facedetector</Filter>
+    </ClCompile>
+    <ClCompile Include="src\person\Person.cpp">
+      <Filter>src\person</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -83,6 +92,12 @@
     </Filter>
     <Filter Include="src\ui\screens">
       <UniqueIdentifier>{f15650be-88eb-4de6-9f17-98ba5ce7cae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\person">
+      <UniqueIdentifier>{5984e83c-5d0e-4f1a-952c-295a5759604a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\facedetector">
+      <UniqueIdentifier>{9131791c-3bdb-4ddb-87c0-1eb5f34e0cc1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="src\ui\screens\WaitScreen.h">
       <Filter>src\ui\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\FaceDetector.h">
+      <Filter>src\facedetector</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\FacePlusPlusDetector.h">
+      <Filter>src\facedetector</Filter>
+    </ClInclude>
+    <ClInclude Include="src\person\Person.h">
+      <Filter>src\person</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 #pragma once
 #include "ofMain.h"
+#include "ofxDatGui.h"
 
 namespace bbrother
 {
@@ -20,12 +21,16 @@ namespace bbrother
 
 		ofEvent<InterfaceEventType> InterfaceEvent;
 
-		virtual void update() = 0;
-		virtual void draw() = 0;
+		virtual void update();
+		virtual void draw();
 		virtual ~TestInterfaceLayout();
+		virtual void setVisibility(bool isVisible);
+		virtual void setPosition(const ofPoint& position);
 
-	private:
-		// arts vector
+	protected:
+		bool isVisible;
+		ofPoint position;
+		vector<ofPtr<ofxDatGuiComponent>> components;
 	};
 }
 

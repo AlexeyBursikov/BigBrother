@@ -3,7 +3,7 @@
 
 namespace bbrother
 {
-	typedef shared_ptr<class Config> ConfigPtr;
+	typedef ofPtr<class Config> ConfigPtr;
 
 	class Config
 	{

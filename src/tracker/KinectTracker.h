@@ -13,6 +13,9 @@ namespace bbrother
 		virtual void update() override;
 		virtual void draw() override;	
 
+		virtual void start() override;
+		virtual void stop() override;
+
 		virtual ~KinectTracker();
 	};
 }

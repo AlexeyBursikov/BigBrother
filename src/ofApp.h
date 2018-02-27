@@ -5,6 +5,7 @@
 #include "config/Config.h"
 #include "ui/MainAppUIHolder.h"
 #include "interface/TestInterfaceLayout.h"
+#include "facedetector/FaceDetector.h"
 
 #define DEBUG_VERSION//
 
@@ -20,6 +21,7 @@ class ofApp : public ofBaseApp{
 private:
 	bbrother::ConfigPtr config;
 	bbrother::TrackerPtr tracker;
+	bbrother::FaceDetectorPtr facedetector;
 	bbrother::MainAppUIHolderPtr mainUI;
 
 #ifdef DEBUG_VERSION

@@ -1,7 +1,6 @@
 #pragma once
 #include "ofMain.h"
 #include "TestInterfaceLayout.h"
-#include "ofxDatGui.h"
 
 namespace bbrother
 {
@@ -12,13 +11,17 @@ namespace bbrother
 	public:
 		TestKinectInterfaceLayout();
 
-		virtual void update();
-		virtual void draw();
+		virtual void update() override;
+		virtual void draw() override;
 		virtual ~TestKinectInterfaceLayout();
 
 	private:
-		ofPtr<ofxDatGuiButton> kinectStartButton;
+		ofPtr<ofxDatGuiButton> kinectStartButton, kinectStopButton, kinectShowFrames;
+		ofPtr<ofxDatGuiLabel> peopleTrackedText;
+
 		void kinectStartButtonClicked(ofxDatGuiButtonEvent event);
+		void kinectStopButtonClicked(ofxDatGuiButtonEvent event);
+		void kinectShowFramesButtonClicked(ofxDatGuiButtonEvent event);
 	};
 }
 
