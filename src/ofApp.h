@@ -25,7 +25,8 @@ private:
 	bbrother::MainAppUIHolderPtr mainUI;
 
 #ifdef DEBUG_VERSION
-	bbrother::TestInterfaceLayoutPtr testInterfaceLayout;
+	bbrother::TestInterfaceLayoutPtr testKinectInterfaceLayout;
+	bbrother::TestInterfaceLayoutPtr testMainUIInterfaceLayout;
 #endif
 
 	void onConfigLoadComplete();

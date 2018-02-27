@@ -6,6 +6,14 @@ namespace bbrother
 {
 	typedef ofPtr<class MainAppUIHolder> MainAppUIHolderPtr;
 
+	enum class ScreenState
+	{
+		None,
+		Wait,
+		Detect,
+		Result
+	};
+
 	class MainAppUIHolder
 	{
 	public:

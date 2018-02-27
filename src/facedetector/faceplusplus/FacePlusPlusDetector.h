@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
-#include "FaceDetector.h"
+#include "../FaceDetector.h"
+#include "FacePlusPlusTypes.h"
 
 namespace bbrother
 {
@@ -13,7 +14,7 @@ namespace bbrother
 		virtual ~FacePlusPlusDetector();
 
 	private:
-		Face
+		Face face;
 	};
 }
 

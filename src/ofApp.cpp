@@ -1,8 +1,9 @@
 #include "ofApp.h"
 #include "config/Config.h"
 #include "interface/TestKinectInterfaceLayout.h"
+#include "interface/TestMainUIInterfaceLayout.h"
 #include "tracker/KinectTracker.h"
-#include "facedetector/FacePlusPlusDetector.h"
+#include "facedetector/faceplusplus/FacePlusPlusDetector.h"
 
 using namespace bbrother;
 
@@ -13,10 +14,16 @@ void ofApp::setup()
 	ofAddListener(config->loadCompleteEvent, this, &ofApp::onConfigLoadComplete);
 
 #ifdef DEBUG_VERSION	
-	testInterfaceLayout = TestInterfaceLayoutPtr(new TestKinectInterfaceLayout());
-	testInterfaceLayout->setPosition(ofPoint(20, 40));
-	testInterfaceLayout->setVisibility(true);
-	ofAddListener(testInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
+	testKinectInterfaceLayout = TestInterfaceLayoutPtr(new TestKinectInterfaceLayout());
+	testKinectInterfaceLayout->setPosition(ofPoint(20, 40));
+	testKinectInterfaceLayout->setVisibility(true);
+	ofAddListener(testKinectInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
+
+	testMainUIInterfaceLayout = TestInterfaceLayoutPtr(new TestMainUIInterfaceLayout());
+	testMainUIInterfaceLayout->setPosition(ofPoint(400, 40));
+	testMainUIInterfaceLayout->setVisibility(true);
+	ofAddListener(testMainUIInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
+
 #endif
 
 	tracker = bbrother::TrackerPtr(new KinectTracker());
@@ -45,6 +52,10 @@ void ofApp::onInterfaceEvent(bbrother::InterfaceEventType& Event)
 	case InterfaceEventType::TrackingStart:
 		ofLog(ofLogLevel::OF_LOG_NOTICE, "Try kinect starts...");
 		break;
+
+	case InterfaceEventType::ShowWaitScreen:
+		ofLog(ofLogLevel::OF_LOG_NOTICE, "Show Wait Screen...");
+		break;
 	}
 }
 
@@ -55,7 +66,8 @@ void ofApp::update()
 	mainUI->update();
 
 #ifdef DEBUG_VERSION
-	testInterfaceLayout->update();
+	testKinectInterfaceLayout->update();
+	testMainUIInterfaceLayout->update();
 #endif
 }
 
@@ -67,7 +79,8 @@ void ofApp::draw()
 
 #ifdef DEBUG_VERSION
 	// on top level
-	testInterfaceLayout->draw();
+	testKinectInterfaceLayout->draw();
+	testMainUIInterfaceLayout->draw();
 #endif
 }
 

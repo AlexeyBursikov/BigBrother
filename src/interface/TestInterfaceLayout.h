@@ -9,7 +9,11 @@ namespace bbrother
 		None,
 		TrackingStart,
 		TrackingStop,
-		TryDetectHuman
+		TryDetectHuman,
+
+		ShowWaitScreen,
+		ShowDetectScreen,
+		ShowResultScreen
 	};
 
 	typedef ofPtr<class TestInterfaceLayout> TestInterfaceLayoutPtr;

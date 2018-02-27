@@ -43,11 +43,17 @@
     <ClCompile Include="src\facedetector\FaceDetector.cpp">
       <Filter>src\facedetector</Filter>
     </ClCompile>
-    <ClCompile Include="src\facedetector\FacePlusPlusDetector.cpp">
-      <Filter>src\facedetector</Filter>
-    </ClCompile>
     <ClCompile Include="src\person\Person.cpp">
       <Filter>src\person</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\TestMainUIInterfaceLayout.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusDetector.cpp">
+      <Filter>src\facedetector\faceplusplus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusTypes.cpp">
+      <Filter>src\facedetector\faceplusplus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +104,9 @@
     </Filter>
     <Filter Include="src\facedetector">
       <UniqueIdentifier>{9131791c-3bdb-4ddb-87c0-1eb5f34e0cc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\facedetector\faceplusplus">
+      <UniqueIdentifier>{0abb525e-111e-41a4-aab0-c2449f12b410}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -194,11 +203,17 @@
     <ClInclude Include="src\facedetector\FaceDetector.h">
       <Filter>src\facedetector</Filter>
     </ClInclude>
-    <ClInclude Include="src\facedetector\FacePlusPlusDetector.h">
-      <Filter>src\facedetector</Filter>
-    </ClInclude>
     <ClInclude Include="src\person\Person.h">
       <Filter>src\person</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interface\TestMainUIInterfaceLayout.h">
+      <Filter>src\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusDetector.h">
+      <Filter>src\facedetector\faceplusplus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusTypes.h">
+      <Filter>src\facedetector\faceplusplus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
