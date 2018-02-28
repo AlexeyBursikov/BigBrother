@@ -19,7 +19,7 @@ void FacePlusPlusDetector::init(ConfigPtr config)
 	API_SECRET = "s9Gn2v8GOe6w5WMCh8ywYMJIcVRUlxlh";
 
 	const string filePath = "c:\\projects\\Openframeworks\\of_v0.9.8_vs_release\\apps\\myApps\\BigBrother\\bin\\data\\face.jpg";
-	makeRequest(FACE_URL, API_KEY, API_SECRET, filePath);
+	//makeRequest(FACE_URL, API_KEY, API_SECRET, filePath);
 }
 
 void FacePlusPlusDetector::makeRequest(const string& FACE_URL, const string& API_KEY, const string& API_SECRET, const string& filePath)
