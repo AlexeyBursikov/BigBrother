@@ -199,6 +199,8 @@ c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\incl
     <ClCompile Include="src\tracker\Tracker.cpp" />
     <ClCompile Include="src\ui\MainAppUIHolder.cpp" />
     <ClCompile Include="src\ui\screens\BaseScreen.cpp" />
+    <ClCompile Include="src\ui\screens\DetectScreen.cpp" />
+    <ClCompile Include="src\ui\screens\ResultScreen.cpp" />
     <ClCompile Include="src\ui\screens\WaitScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +244,8 @@ c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\incl
     <ClInclude Include="src\tracker\Tracker.h" />
     <ClInclude Include="src\ui\MainAppUIHolder.h" />
     <ClInclude Include="src\ui\screens\BaseScreen.h" />
+    <ClInclude Include="src\ui\screens\DetectScreen.h" />
+    <ClInclude Include="src\ui\screens\ResultScreen.h" />
     <ClInclude Include="src\ui\screens\WaitScreen.h" />
   </ItemGroup>
   <ItemGroup>
