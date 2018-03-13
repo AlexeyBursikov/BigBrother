@@ -13,6 +13,7 @@ namespace bbrother
 		virtual void draw();
 
 		virtual ~BaseScreen();
+		ofTrueTypeFont font;
 	};
 }
 

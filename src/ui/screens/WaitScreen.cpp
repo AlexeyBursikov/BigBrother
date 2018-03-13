@@ -4,8 +4,7 @@ using namespace bbrother;
 
 WaitScreen::WaitScreen()
 {
-	ofLog(ofLogLevel::OF_LOG_NOTICE, "Wait Screen init");	
-
+	ofLog(ofLogLevel::OF_LOG_NOTICE, "Wait Screen init");
 }
 
 void WaitScreen::update()
@@ -15,7 +14,7 @@ void WaitScreen::update()
 
 void WaitScreen::draw()
 {
-	ofSetColor(ofFloatColor(1, 0, 0));
+	/*ofSetColor(ofFloatColor(1, 0, 0));
 
 	float i = 0;
 	ofPolyline line;
@@ -30,6 +29,9 @@ void WaitScreen::draw()
 	}
 	line.close();
 	line.draw();
+	*/
+	string msg = "WaitScreen";
+	font.drawString(msg, ofGetWidth() / 2 - msg.size() * 36 / 2, ofGetHeight() / 2);
 }
 
 WaitScreen::~WaitScreen()

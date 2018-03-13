@@ -14,6 +14,9 @@ namespace bbrother
 		virtual void draw();
 
 		virtual ~WaitScreen();
+
+	private:
+		ofImage image;
 	};
 }
 

@@ -1,2 +1,2 @@
-ofxDatGui
-ofxJSON
+ofxDatGui-master
+ofxJSON-master
