@@ -40,12 +40,14 @@ void TestMainUIInterfaceLayout::screen1ButtonClicked(ofxDatGuiButtonEvent event)
 
 void TestMainUIInterfaceLayout::screen2ButtonClicked(ofxDatGuiButtonEvent event)
 {
-
+	auto type = InterfaceEventType::ShowDetectScreen;
+	ofNotifyEvent(InterfaceEvent, type);
 }
 
 void TestMainUIInterfaceLayout::screen3ButtonClicked(ofxDatGuiButtonEvent event)
 {
-	
+	auto type = InterfaceEventType::ShowResultScreen;
+	ofNotifyEvent(InterfaceEvent, type);
 }
 
 TestMainUIInterfaceLayout::~TestMainUIInterfaceLayout()

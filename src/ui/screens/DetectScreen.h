@@ -4,19 +4,17 @@
 
 namespace bbrother
 {
-	typedef ofPtr<class WaitScreen> WaitScreenPtr;
+	typedef ofPtr<class DetectScreen> DetectScreenPtr;
 
-	class WaitScreen : public BaseScreen
+	class DetectScreen : public BaseScreen
 	{
 	public:
-		WaitScreen();
+		DetectScreen();
 		virtual void update();
 		virtual void draw();
 
-		virtual ~WaitScreen();
-
+		virtual ~DetectScreen();
 	private:
 		ofImage image;
 	};
 }
-
