@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "../FaceDetector.h"
 #include "FacePlusPlusTypes.h"
-
+#include "ofxJSON.h"
 #include "../../tools/http/ofxHttpUtils.h"
 #include "../../tools/http/ofxHttpTypes.h"
 
@@ -14,7 +14,7 @@ namespace bbrother
 	{
 	public:
 		FacePlusPlusDetector();
-		virtual void init(ConfigPtr config) override;
+		virtual void init( ConfigPtr config ) override;
 		virtual ~FacePlusPlusDetector();
 
 	private:

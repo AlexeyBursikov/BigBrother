@@ -10,7 +10,7 @@ namespace bbrother
 	{
 	public:
 		FaceDetector();
-		virtual void init(ConfigPtr config) = 0;
+		virtual void init( ConfigPtr config ) = 0;
 		virtual ~FaceDetector();
 		
 	};

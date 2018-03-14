@@ -14,7 +14,7 @@ void ofApp::setup()
 	ofAddListener(config->loadCompleteEvent, this, &ofApp::onConfigLoadComplete);
 
 #ifdef DEBUG_VERSION	
-	testKinectInterfaceLayout = TestInterfaceLayoutPtr(new TestKinectInterfaceLayout());
+	/*testKinectInterfaceLayout = TestInterfaceLayoutPtr(new TestKinectInterfaceLayout());
 	testKinectInterfaceLayout->setPosition(ofPoint(20, 40));
 	testKinectInterfaceLayout->setVisibility(true);
 	ofAddListener(testKinectInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
@@ -23,12 +23,12 @@ void ofApp::setup()
 	testMainUIInterfaceLayout->setPosition(ofPoint(400, 40));
 	testMainUIInterfaceLayout->setVisibility(true);
 	ofAddListener(testMainUIInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
-
+	*/
 #endif
 
-	tracker = bbrother::TrackerPtr(new KinectTracker());
+	//tracker = bbrother::TrackerPtr(new KinectTracker());
 	facedetector = bbrother::FaceDetectorPtr(new FacePlusPlusDetector());
-	mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
+	//mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
 
 	//printerWorker = bbrother::PrinterWorkerPtr(new PrinterWorker());	
 	//tcpController = TcpControllerPtr(new TcpController());
@@ -64,25 +64,25 @@ void ofApp::onInterfaceEvent(bbrother::InterfaceEventType& Event)
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	tracker->update();
-	mainUI->update();
+	//tracker->update();
+	//mainUI->update();
 
 #ifdef DEBUG_VERSION
-	testKinectInterfaceLayout->update();
-	testMainUIInterfaceLayout->update();
+	//testKinectInterfaceLayout->update();
+	//testMainUIInterfaceLayout->update();
 #endif
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	tracker->draw();
-	mainUI->draw();
+	//tracker->draw();
+	//mainUI->draw();
 
 #ifdef DEBUG_VERSION
 	// on top level
-	testKinectInterfaceLayout->draw();
-	testMainUIInterfaceLayout->draw();
+	//testKinectInterfaceLayout->draw();
+	//testMainUIInterfaceLayout->draw();
 #endif
 }
 

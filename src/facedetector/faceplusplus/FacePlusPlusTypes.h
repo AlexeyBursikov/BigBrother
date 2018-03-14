@@ -17,6 +17,8 @@ namespace bbrother
 	struct FaceAttributes
 	{
 		string gender;
+		int age;
+		string ethnicity;
 		//HeadPose headpose;
 		//Beauty beauty;
 		//Eyegaze eyegaze;
