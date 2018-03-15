@@ -4,12 +4,24 @@ using namespace bbrother;
 
 Config::Config()
 {
-	ofLog(ofLogLevel::OF_LOG_NOTICE, "Config init");	
+	setConfigPath();
+	ofLog(ofLogLevel::OF_LOG_NOTICE, "Config init");
 }
 
 void Config::load()
 {
-	ofNotifyEvent(loadCompleteEvent, this);
+	if (element.openLocal(path)) 
+	{
+		text = element.getRawString();
+		ofLog(ofLogLevel::OF_LOG_NOTICE, text);
+		ofNotifyEvent(loadCompleteEvent, this);
+	}
+	ofNotifyEvent(loadErrorEvent, this);
+}
+
+void Config::setConfigPath(const std::string _path)
+{
+	path = _path;
 }
 
 Config::~Config()
