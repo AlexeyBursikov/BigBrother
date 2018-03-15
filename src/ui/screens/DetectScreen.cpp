@@ -14,7 +14,7 @@ void DetectScreen::update()
 
 void DetectScreen::draw()
 {
-	string msg = "DetectScreen";
+	std::string msg = "DetectScreen";
 	font.drawString(msg, ofGetWidth() / 2 - msg.size() * 36 / 2, ofGetHeight() / 2);
 }
 

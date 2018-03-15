@@ -14,7 +14,7 @@ void  ResultScreen::update()
 
 void  ResultScreen::draw()
 {
-	string msg = "ResultScreen";
+	std::string msg = "ResultScreen";
 	font.drawString(msg, ofGetWidth() / 2 - msg.size() * 36 / 2, ofGetHeight() / 2);
 }
 

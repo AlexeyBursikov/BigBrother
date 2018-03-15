@@ -15,7 +15,7 @@ void BaseScreen::update()
 
 void BaseScreen::draw()
 {
-	string msg = "BaseScreen";
+	std::string msg = "BaseScreen";
 	font.drawString(msg, ofGetWidth() / 2 - msg.size() * 36 / 2, ofGetHeight() / 2);
 }
 
