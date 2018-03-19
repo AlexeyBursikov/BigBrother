@@ -1,5 +1,4 @@
 #pragma once
-
 #include "ofMain.h"
 #include "tracker/Tracker.h"
 #include "config/Config.h"
@@ -9,14 +8,14 @@
 
 #define DEBUG_VERSION//
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
 
-	public:
-		void setup();
-		void update();
-		void draw();
-	
-		void windowResized(int w, int h);
+public:
+	void setup();
+	void update();
+	void draw();
+
+	void windowResized( int w, int h );
 
 private:
 	bbrother::ConfigPtr config;
@@ -30,5 +29,5 @@ private:
 #endif
 
 	void onConfigLoadComplete();
-	void onInterfaceEvent(bbrother::InterfaceEventType& Event);
+	void onInterfaceEvent( bbrother::InterfaceEventType& Event );
 };

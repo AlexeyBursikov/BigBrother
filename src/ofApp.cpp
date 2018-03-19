@@ -4,6 +4,7 @@
 #include "interface/TestMainUIInterfaceLayout.h"
 #include "tracker/KinectTracker.h"
 #include "facedetector/faceplusplus/FacePlusPlusDetector.h"
+#include "interface/TestFacePlusPlusInterfaceLayout.h"
 
 using namespace bbrother;
 
@@ -18,12 +19,20 @@ void ofApp::setup()
 	testKinectInterfaceLayout->setPosition(ofPoint(20, 40));
 	testKinectInterfaceLayout->setVisibility(true);
 	ofAddListener(testKinectInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
+	*/
 
-	testMainUIInterfaceLayout = TestInterfaceLayoutPtr(new TestMainUIInterfaceLayout());
+	//testMainUIInterfaceLayout = TestInterfaceLayoutPtr(new TestMainUIInterfaceLayout());
+	//testMainUIInterfaceLayout->setPosition(ofPoint(400, 40));
+	//testMainUIInterfaceLayout->setVisibility(true);
+	//ofAddListener(testMainUIInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
+	
+	testMainUIInterfaceLayout = TestInterfaceLayoutPtr(new TestFacePlusPlusInterfaceLayout());
 	testMainUIInterfaceLayout->setPosition(ofPoint(400, 40));
 	testMainUIInterfaceLayout->setVisibility(true);
+	testMainUIInterfaceLayout->setConfig( config );
 	ofAddListener(testMainUIInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
-	*/
+
+
 #endif
 
 	//tracker = bbrother::TrackerPtr(new KinectTracker());
@@ -69,7 +78,7 @@ void ofApp::update()
 
 #ifdef DEBUG_VERSION
 	//testKinectInterfaceLayout->update();
-	//testMainUIInterfaceLayout->update();
+	testMainUIInterfaceLayout->update();
 #endif
 }
 
@@ -82,7 +91,7 @@ void ofApp::draw()
 #ifdef DEBUG_VERSION
 	// on top level
 	//testKinectInterfaceLayout->draw();
-	//testMainUIInterfaceLayout->draw();
+	testMainUIInterfaceLayout->draw();
 #endif
 }
 

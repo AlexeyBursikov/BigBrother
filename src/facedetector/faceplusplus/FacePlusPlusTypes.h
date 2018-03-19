@@ -12,17 +12,24 @@ namespace bbrother
 		float left;
 		float width;
 		float height;
+
+		void Print() const;
+	};
+
+	struct Beauty {
+		float maleScore;
+		float femaleScore;
 	};
 
 	struct FaceAttributes
 	{
-		string gender;
+		string gender; //TODO: ENUM
 		int age;
-		string ethnicity;
-		//HeadPose headpose;
-		//Beauty beauty;
-		//Eyegaze eyegaze;
+		string ethnicity; //TODO: ENUM
+		Beauty beauty;
+
 		void setBeauty(float maleScore, float femaleScore);
+		void Print() const;
 	};
 
 	class Face
@@ -34,6 +41,8 @@ namespace bbrother
 
 	public:
 		Face();
+
+		void Print() const;
 
 		void setToken(const string& token);
 		string getToken() const;
@@ -47,8 +56,7 @@ namespace bbrother
 		void setAttributes(const FaceAttributes& attributes);
 		FaceAttributes getAttributes() const;
 
-		/*Beauty getBeauty() const;*/
-
+		Beauty getBeauty() const;
 	};
 }
 

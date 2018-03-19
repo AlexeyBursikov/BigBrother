@@ -1,5 +1,6 @@
 #include "FacePlusPlusDetector.h"
 #include "ofxJSON.h"
+#include "JsonParser.h"
 
 using namespace bbrother;
 
@@ -18,13 +19,20 @@ void FacePlusPlusDetector::init( ConfigPtr config )
 	API_KEY = "t1y6VUUSmxx8yLUiww5SwiigbR-CWPrr";
 	API_SECRET = "A4dY2MQMKXEJgomNBWNkBANwKGB9ssEe";
 
-	//const string filePath = "c:\\projects\\Openframeworks\\of_v0.9.8_vs_release\\apps\\myApps\\BigBrother\\bin\\data\\face.jpg";
-	const string filePath = "c:\\face1.jpg";
-	makeRequest(FACE_URL, API_KEY, API_SECRET, filePath);
+	test = WaitForPhoto;
+	ofNotifyEvent( status_event, test );
+}
+
+void FacePlusPlusDetector::ProcessImage(string path_) {
+	path = path_;
+	makeRequest( FACE_URL, API_KEY, API_SECRET, path );
 }
 
 void FacePlusPlusDetector::makeRequest(const string& FACE_URL, const string& API_KEY, const string& API_SECRET, const string& filePath)
 {
+	test = Process;
+	ofNotifyEvent( status_event, test );
+
 	ofAddListener(httpUtils.newResponseEvent, this, &FacePlusPlusDetector::newResponse);
 	httpUtils.start();
 
@@ -38,14 +46,21 @@ void FacePlusPlusDetector::makeRequest(const string& FACE_URL, const string& API
 	form.addFormField( "return_attributes", "gender,age,ethnicity,beauty" );
 	httpUtils.addForm(form);
 }
-//--------------------------------------------------------------
-void FacePlusPlusDetector::newResponse(ofxHttpResponse & response) 
+
+
+void FacePlusPlusDetector::newResponse( ofxHttpResponse & response )
 {
-	auto responseStr = ofToString(response.status) + ": " + (string)response.responseBody;
-	cout << "responseStr: " << responseStr << endl;
-	ofxJSONElement json(response.responseBody);
-	string res = json.getRawString( true );
-	std::cout << std::endl << res;
+	JsonParser parser( response.responseBody );
+	Face* res = parser.Parse();
+
+	if( res == NULL ) {
+		test = NotDetect;
+		ofNotifyEvent( status_event, test );
+	} else {
+		test = Detect;
+		ofNotifyEvent( status_event, test );
+		res->Print();
+	}
 }
 
 FacePlusPlusDetector::~FacePlusPlusDetector()
