@@ -37,6 +37,9 @@ void ofApp::setup()
 
 	//tracker = bbrother::TrackerPtr(new KinectTracker());
 	facedetector = bbrother::FaceDetectorPtr(new FacePlusPlusDetector());
+	//@todo
+	//ofAddListener(facedetector->InterfaceEvent, this, &ofApp::onInterfaceEvent);
+
 	//mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
 
 	//printerWorker = bbrother::PrinterWorkerPtr(new PrinterWorker());	
@@ -67,6 +70,11 @@ void ofApp::onInterfaceEvent(bbrother::InterfaceEventType& Event)
 	case InterfaceEventType::ShowWaitScreen:
 		ofLog(ofLogLevel::OF_LOG_NOTICE, "Show Wait Screen...");
 		break;
+
+	//@todo
+	//case InterfaceEventType::SelectFile:
+		//facedetector->processImage(cast to testMainUIInterfaceLayout->getFilePath)
+	//	break;
 	}
 }
 

@@ -1,6 +1,6 @@
 #include "FacePlusPlusDetector.h"
 #include "ofxJSON.h"
-#include "JsonParser.h"
+#include "json/JsonParser.h"
 
 using namespace bbrother;
 
@@ -19,19 +19,17 @@ void FacePlusPlusDetector::init( ConfigPtr config )
 	API_KEY = "t1y6VUUSmxx8yLUiww5SwiigbR-CWPrr";
 	API_SECRET = "A4dY2MQMKXEJgomNBWNkBANwKGB9ssEe";
 
-	test = WaitForPhoto;
-	ofNotifyEvent( status_event, test );
+	setPhotoProcessStatus(WaitForPhoto);
 }
 
-void FacePlusPlusDetector::ProcessImage(string path_) {
-	path = path_;
-	makeRequest( FACE_URL, API_KEY, API_SECRET, path );
+void FacePlusPlusDetector::processImage(const string& path) 
+{	
+	makeRequest(FACE_URL, API_KEY, API_SECRET, path);
 }
 
 void FacePlusPlusDetector::makeRequest(const string& FACE_URL, const string& API_KEY, const string& API_SECRET, const string& filePath)
 {
-	test = Process;
-	ofNotifyEvent( status_event, test );
+	setPhotoProcessStatus(Process);
 
 	ofAddListener(httpUtils.newResponseEvent, this, &FacePlusPlusDetector::newResponse);
 	httpUtils.start();
@@ -47,19 +45,20 @@ void FacePlusPlusDetector::makeRequest(const string& FACE_URL, const string& API
 	httpUtils.addForm(form);
 }
 
-
-void FacePlusPlusDetector::newResponse( ofxHttpResponse & response )
+void FacePlusPlusDetector::newResponse(ofxHttpResponse& response)
 {
-	JsonParser parser( response.responseBody );
-	Face* res = parser.Parse();
+	JsonParser parser(response.responseBody);
+	bool success = parser.parse();
 
-	if( res == NULL ) {
-		test = NotDetect;
-		ofNotifyEvent( status_event, test );
-	} else {
-		test = Detect;
-		ofNotifyEvent( status_event, test );
-		res->Print();
+	if(success)
+	{
+		FacePtr face = parser.getFace();
+		setPhotoProcessStatus(Detect);		
+		face->print();
+	} 
+	else 
+	{
+		setPhotoProcessStatus(NotDetect);
 	}
 }
 

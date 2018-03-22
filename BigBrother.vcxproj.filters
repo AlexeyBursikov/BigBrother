@@ -64,6 +64,12 @@
     <ClCompile Include="src\tools\http\ofxHttpUtils.cpp">
       <Filter>src\tools\http</Filter>
     </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\json\JsonParser.cpp">
+      <Filter>src\facedetector\faceplusplus\json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\interface\TestFacePlusPlusInterfaceLayout.cpp">
+      <Filter>src\interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -143,6 +149,9 @@
     </Filter>
     <Filter Include="src\tools\http">
       <UniqueIdentifier>{f321bc62-7229-47f3-afb4-828bf3cb5440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\facedetector\faceplusplus\json">
+      <UniqueIdentifier>{0f8519cc-d523-4526-a8b4-49848ac4c903}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +277,12 @@
     </ClInclude>
     <ClInclude Include="src\tools\http\ofxHttpUtils.h">
       <Filter>src\tools\http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\json\JsonParser.h">
+      <Filter>src\facedetector\faceplusplus\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interface\TestFacePlusPlusInterfaceLayout.h">
+      <Filter>src\interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

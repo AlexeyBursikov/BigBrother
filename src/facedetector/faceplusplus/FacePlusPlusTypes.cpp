@@ -59,20 +59,23 @@ void Face::setAttributes(const FaceAttributes& attributes)
 	this->attributes = attributes;
 }
 
-void Face::Print() const {
-	attributes.Print();
-	faceRectangle.Print();
+void Face::print() const 
+{
+	attributes.print();
+	faceRectangle.print();
 	std::cout << "token: " << token << std::endl;
 }
 
-void FaceRectangle::Print() const {
+void FaceRectangle::print() const
+{
 	std::cout << "height: " << height << std::endl;
 	std::cout << "top: " << top << std::endl;
 	std::cout << "left: " << left << std::endl;
 	std::cout << "width: " << width << std::endl;
 }
 
-void FaceAttributes::Print() const {
+void FaceAttributes::print() const 
+{
 	std::cout << "gender: " << gender << std::endl;
 	std::cout << "age: " << age << std::endl;
 	std::cout << "ethnity: " << ethnicity << std::endl;

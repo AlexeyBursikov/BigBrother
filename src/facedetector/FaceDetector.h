@@ -6,9 +6,11 @@ namespace bbrother
 {
 	typedef ofPtr<class FaceDetector> FaceDetectorPtr;
 
-	class FaceDetector {
+	class FaceDetector 
+	{
 	public:
-		enum Status {
+		enum PhotoProcessStatus 
+		{
 			WaitForPhoto,
 			Process,
 			Detect,
@@ -16,11 +18,15 @@ namespace bbrother
 		};
 
 		FaceDetector();
-		virtual void init( ConfigPtr config ) = 0;
-		virtual void ProcessImage( string path ) = 0;
-		virtual ~FaceDetector();
-		Status test;
-		ofEvent<Status> status_event;
+		PhotoProcessStatus photoProcessStatus;
+		ofEvent<PhotoProcessStatus> photoProcessStatusEvent;
+		
+		virtual void init(ConfigPtr config) = 0;
+		virtual void processImage(const string& path) = 0;
+		virtual ~FaceDetector();				
+
+		void setPhotoProcessStatus(PhotoProcessStatus status);		
+		string getTextPhotoProcessStatus() const;
+		string getTextPhotoProcessStatus(PhotoProcessStatus status)const;
 	};
 }
-
