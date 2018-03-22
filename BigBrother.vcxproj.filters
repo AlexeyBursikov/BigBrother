@@ -70,6 +70,9 @@
     <ClCompile Include="src\interface\TestFacePlusPlusInterfaceLayout.cpp">
       <Filter>src\interface</Filter>
     </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.cpp">
+      <Filter>src\facedetector\faceplusplus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -283,6 +286,9 @@
     </ClInclude>
     <ClInclude Include="src\interface\TestFacePlusPlusInterfaceLayout.h">
       <Filter>src\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.h">
+      <Filter>src\facedetector\faceplusplus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

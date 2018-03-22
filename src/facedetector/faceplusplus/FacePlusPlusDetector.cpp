@@ -9,7 +9,7 @@ FacePlusPlusDetector::FacePlusPlusDetector()
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Face Plus Plus Detector init");	
 }
 
-void FacePlusPlusDetector::init( ConfigPtr config )
+void FacePlusPlusDetector::init(ConfigPtr config)
 {
 	string FACE_PROTOCOL = "https";
 	string FACE_HOST = "api-us.faceplusplus.com";
