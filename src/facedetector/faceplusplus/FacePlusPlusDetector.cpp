@@ -19,7 +19,7 @@ void FacePlusPlusDetector::init(ConfigPtr config)
 	API_KEY = "t1y6VUUSmxx8yLUiww5SwiigbR-CWPrr";
 	API_SECRET = "A4dY2MQMKXEJgomNBWNkBANwKGB9ssEe";
 
-	setPhotoProcessStatus(WaitForPhoto);
+	setPhotoProcessStatus(PhotoProcessStatus::WaitForPhoto);
 }
 
 void FacePlusPlusDetector::processImage(const string& path) 
@@ -29,7 +29,7 @@ void FacePlusPlusDetector::processImage(const string& path)
 
 void FacePlusPlusDetector::makeRequest(const string& FACE_URL, const string& API_KEY, const string& API_SECRET, const string& filePath)
 {
-	setPhotoProcessStatus(Process);
+	setPhotoProcessStatus(PhotoProcessStatus::Process);
 
 	ofAddListener(httpUtils.newResponseEvent, this, &FacePlusPlusDetector::newResponse);
 	httpUtils.start();
@@ -53,12 +53,12 @@ void FacePlusPlusDetector::newResponse(ofxHttpResponse& response)
 	if(success)
 	{
 		FacePtr face = parser.getFace();
-		setPhotoProcessStatus(Detect);		
+		setPhotoProcessStatus(PhotoProcessStatus::Detect);
 		face->print();
 	} 
 	else 
 	{
-		setPhotoProcessStatus(NotDetect);
+		setPhotoProcessStatus(PhotoProcessStatus::NotDetect);
 	}
 }
 

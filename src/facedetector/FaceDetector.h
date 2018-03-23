@@ -9,7 +9,7 @@ namespace bbrother
 	class FaceDetector 
 	{
 	public:
-		enum PhotoProcessStatus 
+		enum class PhotoProcessStatus 
 		{
 			WaitForPhoto,
 			Process,

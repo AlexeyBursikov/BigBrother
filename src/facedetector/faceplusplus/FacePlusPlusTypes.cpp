@@ -90,5 +90,5 @@ FaceAttributes Face::getAttributes() const
 
 Beauty Face::getBeauty() const
 {
-return attributes.beauty;
+	return attributes.beauty;
 }
