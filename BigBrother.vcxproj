@@ -190,6 +190,8 @@ c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\incl
     <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusTypes.cpp" />
     <ClCompile Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.cpp" />
     <ClCompile Include="src\facedetector\faceplusplus\json\JsonParser.cpp" />
+    <ClCompile Include="src\family\FamilyBaseRequestHandler.cpp" />
+    <ClCompile Include="src\family\json\JsonFamilyParser.cpp" />
     <ClCompile Include="src\interface\TestFacePlusPlusInterfaceLayout.cpp" />
     <ClCompile Include="src\interface\TestInterfaceLayout.cpp" />
     <ClCompile Include="src\interface\TestKinectInterfaceLayout.cpp" />
@@ -236,6 +238,8 @@ c:\projects\Openframeworks\of_v0.9.8_vs_release\addons\ofxJSON\libs\jsoncpp\incl
     <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusTypes.h" />
     <ClInclude Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.h" />
     <ClInclude Include="src\facedetector\faceplusplus\json\JsonParser.h" />
+    <ClInclude Include="src\family\FamilyBaseRequestHandler.h" />
+    <ClInclude Include="src\family\json\JsonFamilyParser.h" />
     <ClInclude Include="src\interface\TestFacePlusPlusInterfaceLayout.h" />
     <ClInclude Include="src\interface\TestInterfaceLayout.h" />
     <ClInclude Include="src\interface\TestKinectInterfaceLayout.h" />

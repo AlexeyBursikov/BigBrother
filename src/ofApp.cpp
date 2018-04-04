@@ -46,6 +46,11 @@ void ofApp::setup()
 	//tcpController = TcpControllerPtr(new TcpController());
 
 	config->load();
+
+	familyBaseRequestHandler = FamilyBaseRequestHandlerPtr(new FamilyBaseRequestHandler());
+	familyBaseRequestHandler->init(config);
+	familyBaseRequestHandler->oathRequest();
+
 }
 
 //--------------------------------------------------------------

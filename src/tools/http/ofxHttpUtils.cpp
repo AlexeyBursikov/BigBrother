@@ -93,9 +93,10 @@ void ofxHttpUtils::threadedFunction(){
 				response = doPostForm(form);
 				ofLogVerbose("ofxHttpUtils") << "(thread running) form submitted (post): "  << form.name;
 			}else{
-				string url = generateUrl(form);
+
+				//string url = generateUrl(form);
 				ofLogVerbose("ofxHttpUtils") << "form submitted (get):" << form.name;
-				response = getUrl(url);
+				response = makeRequest(form, HTTPRequest::HTTP_GET);// getUrl(url);
 			}
     		lock();
             if(response.status!=-1) {
@@ -225,6 +226,113 @@ ofxHttpResponse ofxHttpUtils::postData(string url, const ofBuffer & data,  strin
 }
 
 // ----------------------------------------------------------------------
+
+ofxHttpResponse ofxHttpUtils::makeRequest(ofxHttpForm & form, const std::string& method)
+{
+	ofxHttpResponse response;
+
+	try {
+		URI uri(form.action.c_str());
+		std::string path(uri.getPathAndQuery());
+		if (path.empty()) path = "/";
+
+		//HTTPClientSession session(uri.getHost(), uri.getPort());
+		HTTPRequest req(method, path, HTTPMessage::HTTP_1_1);
+		if (auth.getUsername() != "") auth.authenticate(req);
+
+		if (sendCookies) {
+			for (unsigned i = 0; i<cookies.size(); i++) {
+				NameValueCollection reqCookies;
+				reqCookies.add(cookies[i].getName(), cookies[i].getValue());
+				req.setCookies(reqCookies);
+			}
+		}
+
+		for (unsigned int i = 0; i < form.headerIds.size(); ++i) {
+			const std::string name = form.headerIds[i].c_str();
+			const std::string val = form.headerValues[i].c_str();
+			req.set(name, val);
+		}
+
+
+		HTTPResponse res;
+		HTMLForm pocoForm;
+		// create the form data to send
+		if (form.formFiles.size()>0) {
+			pocoForm.setEncoding(HTMLForm::ENCODING_MULTIPART);
+		}
+		else {
+			pocoForm.setEncoding(HTMLForm::ENCODING_URL);
+		}
+
+		// form values
+		for (unsigned i = 0; i<form.formIds.size(); i++) {
+			const std::string name = form.formIds[i].c_str();
+			const std::string val = form.formValues[i].c_str();
+			pocoForm.set(name, val);
+		}
+
+		map<string, string>::iterator it;
+		for (it = form.formFiles.begin(); it != form.formFiles.end(); it++) {
+			string fileName = it->second.substr(it->second.find_last_of('/') + 1);
+			ofLogVerbose("ofxHttpUtils") << "adding file: " << fileName << " path: " << it->second;
+			pocoForm.addPart(it->first, new FilePartSource(it->second));
+		}
+
+		pocoForm.prepareSubmit(req);
+
+		ofPtr<HTTPSession> session;
+		istream * rs;
+		if (uri.getScheme() == "https") {
+			HTTPSClientSession * httpsSession = new HTTPSClientSession(uri.getHost(), uri.getPort());//,context);
+			httpsSession->setTimeout(Poco::Timespan(20, 0));
+			pocoForm.write(httpsSession->sendRequest(req));
+			rs = &httpsSession->receiveResponse(res);
+			session = ofPtr<HTTPSession>(httpsSession);
+		}
+		else {
+			HTTPClientSession * httpSession = new HTTPClientSession(uri.getHost(), uri.getPort());
+			httpSession->setTimeout(Poco::Timespan(20, 0));
+			pocoForm.write(httpSession->sendRequest(req));
+			rs = &httpSession->receiveResponse(res);
+			session = ofPtr<HTTPSession>(httpSession);
+		}
+
+		response = ofxHttpResponse(res, *rs, form.action);
+
+		if (sendCookies) {
+			cookies.insert(cookies.begin(), response.cookies.begin(), response.cookies.end());
+		}
+
+		if (response.status >= 300 && response.status<400) {
+			Poco::URI uri(req.getURI());
+			uri.resolve(res.get("Location"));
+			response.location = uri.toString();
+		}
+
+		ofNotifyEvent(newResponseEvent, response, this);
+
+
+	}
+	catch (Exception& exc) {
+		ofLogError("ofxHttpUtils") << "ofxHttpUtils error doPostForm -- " << form.action.c_str();
+
+		//ofNotifyEvent(notifyNewError, "time out", this);
+
+		// for now print error, need to broadcast a response
+		ofLogError("ofxHttpUtils") << exc.displayText();
+		response.status = -1;
+		response.reasonForStatus = exc.displayText();
+		ofNotifyEvent(newResponseEvent, response, this);
+
+	}
+
+	return response;
+}
+
+
+// ----------------------------------------------------------------------
+
 ofxHttpResponse ofxHttpUtils::doPostForm(ofxHttpForm & form){
 	ofxHttpResponse response;
     

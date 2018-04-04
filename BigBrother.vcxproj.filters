@@ -73,6 +73,12 @@
     <ClCompile Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.cpp">
       <Filter>src\facedetector\faceplusplus</Filter>
     </ClCompile>
+    <ClCompile Include="src\family\FamilyBaseRequestHandler.cpp">
+      <Filter>src\family</Filter>
+    </ClCompile>
+    <ClCompile Include="src\family\json\JsonFamilyParser.cpp">
+      <Filter>src\family\json</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -155,6 +161,12 @@
     </Filter>
     <Filter Include="src\facedetector\faceplusplus\json">
       <UniqueIdentifier>{0f8519cc-d523-4526-a8b4-49848ac4c903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\family">
+      <UniqueIdentifier>{ca67c2ce-cba9-4af6-a561-92a665d0f74a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\family\json">
+      <UniqueIdentifier>{6bc7ad09-dbf5-420a-bef4-22a5858201e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +301,12 @@
     </ClInclude>
     <ClInclude Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.h">
       <Filter>src\facedetector\faceplusplus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\family\FamilyBaseRequestHandler.h">
+      <Filter>src\family</Filter>
+    </ClInclude>
+    <ClInclude Include="src\family\json\JsonFamilyParser.h">
+      <Filter>src\family\json</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
