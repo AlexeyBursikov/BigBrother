@@ -15,7 +15,7 @@ void HttpService::makeRequest(const string& Url,
 {
 	ofxHttpForm form;
 	form.action = Url;
-	form.method = (int)requestMethod;
+	form.method = requestMethod;
 
 	for (auto param : requestParams)
 	{
@@ -37,7 +37,7 @@ void HttpService::makeRequest(const string& Url,
 {
 	ofxHttpForm form;
 	form.action = Url;
-	form.method = (int)requestMethod;
+	form.method = requestMethod;
 
 	for (auto param : requestParams)
 	{

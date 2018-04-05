@@ -56,14 +56,14 @@ void FamilyBaseRequestHandler::oathRequest()
 
 	vector<HttpService::HeaderParam> headerParams;
 
-	httpService.makeRequest(getRequestUrl(requestType), HttpService::HTTPRequestMethod::POST, requestParams, headerParams);
+	httpService.makeRequest(getRequestUrl(requestType), HTTPRequestMethod::POST, requestParams, headerParams);
 }
 
 void FamilyBaseRequestHandler::getUsersRequest()
 {
 	requestType = FamilyRequest::GetUsers;		
 	vector<HttpService::RequestParam> requestParams;
-	httpService.makeRequest(getRequestUrl(requestType), HttpService::HTTPRequestMethod::GET, requestParams, getOathHeaders());
+	httpService.makeRequest(getRequestUrl(requestType), HTTPRequestMethod::GET, requestParams, getOathHeaders());
 }
 
 void FamilyBaseRequestHandler::createUserRequest(const string& name, const string& masterToken)
@@ -73,7 +73,7 @@ void FamilyBaseRequestHandler::createUserRequest(const string& name, const strin
 	requestParams.push_back(HttpService::RequestParam("name", name));
 	requestParams.push_back(HttpService::RequestParam("master_token", masterToken));
 
-	httpService.makeRequest(getRequestUrl(requestType), HttpService::HTTPRequestMethod::POST, requestParams, getOathHeaders());
+	httpService.makeRequest(getRequestUrl(requestType), HTTPRequestMethod::POST, requestParams, getOathHeaders());
 }
 
 void FamilyBaseRequestHandler::onServerResponse(const string& response)

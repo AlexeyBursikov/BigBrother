@@ -11,11 +11,7 @@ namespace bbrother
 	public:
 		HttpService();
 		virtual ~HttpService();
-		enum class HTTPRequestMethod
-		{
-			GET,
-			POST
-		};
+		
 		struct RequestParam
 		{
 			RequestParam(const string& key, const string& value)

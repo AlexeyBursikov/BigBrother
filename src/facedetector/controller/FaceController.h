@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "../../family/FamilyBaseController.h"
 #include "../faceplusplus/FacePlusPlusDetector.h"
+#include "../faceplusplus/FacePlusPlusComparer.h"
 
 namespace bbrother
 {
@@ -20,7 +21,7 @@ namespace bbrother
 	private:
 		FamilyBaseControllerPtr familyBaseController;
 		FacePlusPlusDetectorPtr facePlusPlusDetector;
-		//FacePlusPlusComparerPtr facePlusPlusComparer;
+		FacePlusPlusComparerPtr facePlusPlusComparer;
 
 		void findUser();
 		void onFaceDetect();

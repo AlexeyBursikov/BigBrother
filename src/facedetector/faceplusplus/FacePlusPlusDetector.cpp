@@ -35,7 +35,7 @@ void FacePlusPlusDetector::processImage(const string& path)
 	HttpService::RequestParam fileParam("image_file", path);
 
 	vector<HttpService::HeaderParam> headerParams;
-	httpService.makeRequest(FACE_URL, HttpService::HTTPRequestMethod::POST, requestParams, fileParam);
+	httpService.makeRequest(FACE_URL, HTTPRequestMethod::POST, requestParams, fileParam);
 }
 
 void FacePlusPlusDetector::update()
