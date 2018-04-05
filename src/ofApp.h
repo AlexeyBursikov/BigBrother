@@ -4,7 +4,7 @@
 #include "config/Config.h"
 #include "ui/MainAppUIHolder.h"
 #include "interface/TestInterfaceLayout.h"
-#include "facedetector/FaceDetector.h"
+#include "facedetector/controller/FaceController.h"
 #include "family/FamilyBaseRequestHandler.h"
 
 #define DEBUG_VERSION//
@@ -22,8 +22,9 @@ private:
 	bbrother::ConfigPtr config;
 	bbrother::TrackerPtr tracker;
 	bbrother::FaceDetectorPtr facedetector;
-	bbrother::MainAppUIHolderPtr mainUI;
-	bbrother::FamilyBaseRequestHandlerPtr familyBaseRequestHandler;
+	bbrother::MainAppUIHolderPtr mainUI;	
+	bbrother::FaceControllerPtr faceController;
+
 
 #ifdef DEBUG_VERSION
 	bbrother::TestInterfaceLayoutPtr testKinectInterfaceLayout;

@@ -6,6 +6,7 @@ using namespace bbrother;
 FamilyBaseRequestHandler::FamilyBaseRequestHandler()
 {
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Family Base Request Handler init");
+	ofAddListener(httpService.ServerResponseEvent, this, &FamilyBaseRequestHandler::onServerResponse);
 }
 
 string FamilyBaseRequestHandler::getRequestUrl(FamilyRequest request) const
@@ -18,8 +19,7 @@ string FamilyBaseRequestHandler::getRequestUrl(FamilyRequest request) const
 	case FamilyRequest::GetUsers:
 		return baseUrl + delimeter + "api/users";
 	case FamilyRequest::CreateUser:
-		return baseUrl + delimeter + "api/users";
-		
+		return baseUrl + delimeter + "api/users";		
 	}
 }
 
@@ -36,71 +36,49 @@ void FamilyBaseRequestHandler::init(ConfigPtr config)
 	oathRequestData.password = "";
 }
 
-vector<FamilyBaseRequestHandler::HeaderParam> FamilyBaseRequestHandler::getOathHeaders() const
+vector<HttpService::HeaderParam> FamilyBaseRequestHandler::getOathHeaders() const
 {
-	vector<HeaderParam> headerParams;
-	headerParams.push_back(HeaderParam("Content-Type", "application/json"));
-	headerParams.push_back(HeaderParam("Authorization", "Bearer " + requestAccessData.accessToken));
+	vector<HttpService::HeaderParam> headerParams;
+	headerParams.push_back(HttpService::HeaderParam("Content-Type", "application/json"));
+	headerParams.push_back(HttpService::HeaderParam("Authorization", "Bearer " + requestAccessData.accessToken));
 	return headerParams;
 }
 
 void FamilyBaseRequestHandler::oathRequest()
 {
 	requestType = FamilyRequest::Oath;	
-	vector<RequestParam> requestParams;
-	requestParams.push_back(RequestParam("grant_type", oathRequestData.grantType));
-	requestParams.push_back(RequestParam("client_id", to_string(oathRequestData.clientId)));
-	requestParams.push_back(RequestParam("client_secret", oathRequestData.clientSecret));
-	requestParams.push_back(RequestParam("username", oathRequestData.username));
-	requestParams.push_back(RequestParam("password", oathRequestData.password));
+	vector<HttpService::RequestParam> requestParams;
+	requestParams.push_back(HttpService::RequestParam("grant_type", oathRequestData.grantType));
+	requestParams.push_back(HttpService::RequestParam("client_id", to_string(oathRequestData.clientId)));
+	requestParams.push_back(HttpService::RequestParam("client_secret", oathRequestData.clientSecret));
+	requestParams.push_back(HttpService::RequestParam("username", oathRequestData.username));
+	requestParams.push_back(HttpService::RequestParam("password", oathRequestData.password));
 
-	vector<HeaderParam> headerParams;
+	vector<HttpService::HeaderParam> headerParams;
 
-	makeRequest(getRequestUrl(requestType), HTTPRequestMethod::POST, requestParams, headerParams);
+	httpService.makeRequest(getRequestUrl(requestType), HttpService::HTTPRequestMethod::POST, requestParams, headerParams);
 }
 
 void FamilyBaseRequestHandler::getUsersRequest()
 {
 	requestType = FamilyRequest::GetUsers;		
-	vector<RequestParam> requestParams;
-	makeRequest(getRequestUrl(requestType), HTTPRequestMethod::GET, requestParams, getOathHeaders());
+	vector<HttpService::RequestParam> requestParams;
+	httpService.makeRequest(getRequestUrl(requestType), HttpService::HTTPRequestMethod::GET, requestParams, getOathHeaders());
 }
 
 void FamilyBaseRequestHandler::createUserRequest(const string& name, const string& masterToken)
 {
 	requestType = FamilyRequest::CreateUser;	
-	vector<RequestParam> requestParams;
-	requestParams.push_back(RequestParam("name", name));
-	requestParams.push_back(RequestParam("master_token", masterToken));
+	vector<HttpService::RequestParam> requestParams;
+	requestParams.push_back(HttpService::RequestParam("name", name));
+	requestParams.push_back(HttpService::RequestParam("master_token", masterToken));
 
-	makeRequest(getRequestUrl(requestType), HTTPRequestMethod::POST, requestParams, getOathHeaders());
+	httpService.makeRequest(getRequestUrl(requestType), HttpService::HTTPRequestMethod::POST, requestParams, getOathHeaders());
 }
 
-void FamilyBaseRequestHandler::makeRequest(const string& Url, HTTPRequestMethod requestMethod, const vector<RequestParam>& requestParams, const vector<HeaderParam>& headerParams)
+void FamilyBaseRequestHandler::onServerResponse(const string& response)
 {
-	ofAddListener(httpUtils.newResponseEvent, this, &FamilyBaseRequestHandler::onServerResponse);	
-	httpUtils.start();
-
-	ofxHttpForm form;
-	form.action = Url;	
-	form.method = (int)requestMethod;	
-
-	for (auto param : requestParams)
-	{
-		form.addFormField(param.key, param.value);
-	}
-
-	for (auto param : headerParams)
-	{
-		form.addHeaderField(param.key, param.value);
-	}
-
-	httpUtils.addForm(form);
-}
-
-void FamilyBaseRequestHandler::onServerResponse(ofxHttpResponse& response)
-{
-	JsonFamilyParser parser(response.responseBody);
+	JsonFamilyParser parser(response);
 	bool success = false;
 
 	switch (requestType)
@@ -115,12 +93,17 @@ void FamilyBaseRequestHandler::onServerResponse(ofxHttpResponse& response)
 		}
 		break;
 	case FamilyRequest::GetUsers:
-		cout << "get users response " << response.responseBody << endl;
+		cout << "get users response " << response<< endl;
 		break;
 	case FamilyRequest::CreateUser:
-		cout << "create user response " << response.responseBody << endl;
+		cout << "create user response " << response << endl;
 		break;
 	}	
+}
+
+void FamilyBaseRequestHandler::update()
+{
+	httpService.update();
 }
 
 FamilyBaseRequestHandler::~FamilyBaseRequestHandler()

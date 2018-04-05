@@ -36,7 +36,8 @@ void ofApp::setup()
 #endif
 
 	//tracker = bbrother::TrackerPtr(new KinectTracker());
-	facedetector = bbrother::FaceDetectorPtr(new FacePlusPlusDetector());
+	//facedetector = bbrother::FaceDetectorPtr(new FacePlusPlusDetector());
+	faceController = FaceControllerPtr(new FaceController());
 	//@todo
 	//ofAddListener(facedetector->InterfaceEvent, this, &ofApp::onInterfaceEvent);
 
@@ -47,10 +48,6 @@ void ofApp::setup()
 
 	config->load();
 
-	familyBaseRequestHandler = FamilyBaseRequestHandlerPtr(new FamilyBaseRequestHandler());
-	familyBaseRequestHandler->init(config);
-	familyBaseRequestHandler->oathRequest();
-
 }
 
 //--------------------------------------------------------------
@@ -58,7 +55,7 @@ void ofApp::onConfigLoadComplete()
 {
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Config load complete");
 
-	facedetector->init(config);
+	faceController->init(config);
 
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Start application...");
 }
@@ -88,6 +85,7 @@ void ofApp::update()
 {
 	//tracker->update();
 	//mainUI->update();
+	faceController->update();
 
 #ifdef DEBUG_VERSION
 	//testKinectInterfaceLayout->update();

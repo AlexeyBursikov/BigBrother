@@ -1,12 +1,13 @@
 #include "FacePlusPlusDetector.h"
 #include "ofxJSON.h"
-#include "json/JsonParser.h"
+#include "json/JsonParserFaceplusPlus.h"
 
 using namespace bbrother;
 
 FacePlusPlusDetector::FacePlusPlusDetector()
 {
-	ofLog(ofLogLevel::OF_LOG_NOTICE, "Face Plus Plus Detector init");	
+	ofLog(ofLogLevel::OF_LOG_NOTICE, "Face Plus Plus Detector init");
+	ofAddListener(httpService.ServerResponseEvent, this, &FacePlusPlusDetector::onServerResponse);
 }
 
 void FacePlusPlusDetector::init(ConfigPtr config)
@@ -23,40 +24,37 @@ void FacePlusPlusDetector::init(ConfigPtr config)
 }
 
 void FacePlusPlusDetector::processImage(const string& path) 
-{	
-	makeRequest(FACE_URL, API_KEY, API_SECRET, path);
-}
-
-void FacePlusPlusDetector::makeRequest(const string& FACE_URL, const string& API_KEY, const string& API_SECRET, const string& filePath)
 {
 	setPhotoProcessStatus(PhotoProcessStatus::Process);
 
-	ofAddListener(httpUtils.newResponseEvent, this, &FacePlusPlusDetector::newResponse);
-	httpUtils.start();
+	vector<HttpService::RequestParam> requestParams;
+	requestParams.push_back(HttpService::RequestParam("api_key", API_KEY));
+	requestParams.push_back(HttpService::RequestParam("api_secret", API_SECRET));
+	requestParams.push_back(HttpService::RequestParam("return_attributes", "gender,age,ethnicity,beauty"));
 
-	ofxHttpForm form;
-	form.action = FACE_URL;
-	cout << "FACE_URL: " << FACE_URL << endl;
-	form.method = OFX_HTTP_POST;
-	form.addFormField("api_key", API_KEY);
-	form.addFormField("api_secret", API_SECRET);
-	form.addFile("image_file", filePath);
-	form.addFormField( "return_attributes", "gender,age,ethnicity,beauty" );
-	httpUtils.addForm(form);
+	HttpService::RequestParam fileParam("image_file", path);
+
+	vector<HttpService::HeaderParam> headerParams;
+	httpService.makeRequest(FACE_URL, HttpService::HTTPRequestMethod::POST, requestParams, fileParam);
 }
 
-void FacePlusPlusDetector::newResponse(ofxHttpResponse& response)
+void FacePlusPlusDetector::update()
 {
-	JsonParser parser(response.responseBody);
+	httpService.update();
+}
+
+void FacePlusPlusDetector::onServerResponse(const string& response)
+{
+	JsonParserFaceplusPlus parser(response);
 	bool success = parser.parse();
 
-	if(success)
+	if (success)
 	{
 		FacePtr face = parser.getFace();
 		setPhotoProcessStatus(PhotoProcessStatus::Detect);
 		face->print();
-	} 
-	else 
+	}
+	else
 	{
 		setPhotoProcessStatus(PhotoProcessStatus::NotDetect);
 	}

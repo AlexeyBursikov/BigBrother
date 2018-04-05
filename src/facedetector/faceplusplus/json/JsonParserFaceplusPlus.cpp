@@ -1,20 +1,20 @@
-#include "JsonParser.h"
+#include "JsonParserFaceplusPlus.h"
 
 using namespace bbrother;
 
-JsonParser::JsonParser(const string& json):
+JsonParserFaceplusPlus::JsonParserFaceplusPlus(const string& json):
 	isParseSuccess(false)
 {
 	isValid = reader.parse(json, root);
 	currentFace = FacePtr(new Face());
 }
 
-bool JsonParser::valid() 
+bool JsonParserFaceplusPlus::valid()
 {
 	return isValid;
 }
 
-void JsonParser::setAttributes(FacePtr face, Json::Value faces)
+void JsonParserFaceplusPlus::setAttributes(FacePtr face, Json::Value faces)
 {
 	FaceAttributes tmpAttributes;
 	tmpAttributes.age = faces[0]["attributes"]["age"].get("value", 0).asInt();
@@ -28,7 +28,7 @@ void JsonParser::setAttributes(FacePtr face, Json::Value faces)
 	face->setAttributes(tmpAttributes);
 }
 
-void JsonParser::setFaceRectangle(FacePtr face, Json::Value faces)
+void JsonParserFaceplusPlus::setFaceRectangle(FacePtr face, Json::Value faces)
 {
 	FaceRectangle rectangle;
 	rectangle.height = faces[0]["face_rectangle"].get("height", 0).asFloat();
@@ -38,12 +38,12 @@ void JsonParser::setFaceRectangle(FacePtr face, Json::Value faces)
 	face->setFaceRectangle(rectangle);
 }
 
-void JsonParser::setFaceToken(FacePtr human, Json::Value faces)
+void JsonParserFaceplusPlus::setFaceToken(FacePtr human, Json::Value faces)
 {
 	human->setToken(faces[0].get("face_token", "0").asString());
 }
 
-bool JsonParser::parse() 
+bool JsonParserFaceplusPlus::parse()
 {
 	if(isValid)
 	{ 
@@ -68,7 +68,7 @@ bool JsonParser::parse()
 	return isParseSuccess;
 }
 
-FacePtr JsonParser::getFace() const
+FacePtr JsonParserFaceplusPlus::getFace() const
 {
 	return currentFace;
 }

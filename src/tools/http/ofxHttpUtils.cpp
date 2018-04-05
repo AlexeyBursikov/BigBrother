@@ -55,6 +55,7 @@ ofxHttpUtils::ofxHttpUtils(){
 
 // ----------------------------------------------------------------------
 ofxHttpUtils::~ofxHttpUtils(){
+	waitForThread(true);
 }
 
 // ----------------------------------------------------------------------
@@ -82,31 +83,41 @@ void ofxHttpUtils::stop() {
 }
 
 // ----------------------------------------------------------------------
-void ofxHttpUtils::threadedFunction(){
+void ofxHttpUtils::threadedFunction()
+{
 	lock();
-    while( isThreadRunning() ){
-    	if(forms.size()>0){
+    while( isThreadRunning())
+	{
+    	if(forms.size() > 0)
+		{
 			ofxHttpForm form = forms.front();
 			ofxHttpResponse response;
+
 	    	unlock();
-			if(form.method==OFX_HTTP_POST){
+			if(form.method == OFX_HTTP_POST)
+			{
 				response = doPostForm(form);
 				ofLogVerbose("ofxHttpUtils") << "(thread running) form submitted (post): "  << form.name;
-			}else{
-
+			}
+			else
+			{
 				//string url = generateUrl(form);
 				ofLogVerbose("ofxHttpUtils") << "form submitted (get):" << form.name;
 				response = makeRequest(form, HTTPRequest::HTTP_GET);// getUrl(url);
 			}
     		lock();
-            if(response.status!=-1) {
+
+            if(response.status != -1)
+			{
                 nbOfTries = 0;
                 forms.pop();
             }
-            else if (maxRetries >= 0) {
+            else if (maxRetries >= 0) 
+			{
                 nbOfTries++;
                 ofLogWarning("ofxHttpUtils") << "The resquest did not succeed. We will try again " << maxRetries - nbOfTries << " time(s)";
-                if (nbOfTries >= maxRetries) {
+                if (nbOfTries >= maxRetries)
+				{
                     ofLogError("ofxHttpUtils") << "We pop that resquest. Too much retries -- " << form.action.c_str();
                     nbOfTries = 0;
                     forms.pop();
@@ -114,7 +125,8 @@ void ofxHttpUtils::threadedFunction(){
             }
             
     	}
-    	if(forms.empty()){
+    	if(forms.empty())
+		{
     	    ofLogVerbose("ofxHttpUtils") << "empty, waiting";
     		condition.wait(mutex);
     	}
@@ -136,7 +148,8 @@ void ofxHttpUtils::clearQueue(){
 }
 
 // ----------------------------------------------------------------------
-string ofxHttpUtils::generateUrl(ofxHttpForm & form) {
+string ofxHttpUtils::generateUrl(ofxHttpForm& form)
+{
     // url to send to
     string url = form.action;
 
@@ -219,8 +232,7 @@ ofxHttpResponse ofxHttpUtils::postData(string url, const ofBuffer & data,  strin
     	ofLogError("ofxHttpUtils") << exc.displayText();
         response.status = -1;
         response.reasonForStatus = exc.displayText();
-    	ofNotifyEvent(newResponseEvent, response, this);
-
+		ofNotifyEvent(newResponseEvent, response, this);
     }
 	return response;
 }
@@ -253,7 +265,6 @@ ofxHttpResponse ofxHttpUtils::makeRequest(ofxHttpForm & form, const std::string&
 			const std::string val = form.headerValues[i].c_str();
 			req.set(name, val);
 		}
-
 
 		HTTPResponse res;
 		HTMLForm pocoForm;
@@ -311,20 +322,14 @@ ofxHttpResponse ofxHttpUtils::makeRequest(ofxHttpForm & form, const std::string&
 		}
 
 		ofNotifyEvent(newResponseEvent, response, this);
-
-
 	}
-	catch (Exception& exc) {
+	catch (Exception& exc) 
+	{
 		ofLogError("ofxHttpUtils") << "ofxHttpUtils error doPostForm -- " << form.action.c_str();
-
-		//ofNotifyEvent(notifyNewError, "time out", this);
-
-		// for now print error, need to broadcast a response
 		ofLogError("ofxHttpUtils") << exc.displayText();
 		response.status = -1;
 		response.reasonForStatus = exc.displayText();
 		ofNotifyEvent(newResponseEvent, response, this);
-
 	}
 
 	return response;

@@ -1,7 +1,7 @@
 #pragma once
 #include "TestInterfaceLayout.h"
 #include "ofMain.h"
-#include "../facedetector/FaceDetector.h"
+#include "../facedetector/abstract/FaceDetector.h"
 #include "../facedetector/faceplusplus/FacePlusPlusDetector.h"
 
 namespace bbrother

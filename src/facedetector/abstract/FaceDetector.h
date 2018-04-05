@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "../config/Config.h"
+#include "../../config/Config.h"
 
 namespace bbrother
 {
@@ -22,6 +22,7 @@ namespace bbrother
 		ofEvent<PhotoProcessStatus> photoProcessStatusEvent;
 		
 		virtual void init(ConfigPtr config) = 0;
+		virtual void update() = 0;
 		virtual void processImage(const string& path) = 0;
 		virtual ~FaceDetector();				
 

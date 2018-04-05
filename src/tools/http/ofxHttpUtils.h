@@ -110,12 +110,10 @@ class ofxHttpUtils : public ofThread{
         void stop();
 
     protected:
-
 		bool verbose;
         int timeoutSeconds;
         int maxRetries; 
-        bool sendCookies;
-    
+        bool sendCookies;    
         int nbOfTries;
 
 		//--------------------------------
@@ -130,6 +128,5 @@ class ofxHttpUtils : public ofThread{
 		Poco::Condition condition;
 
 		static bool initialized;
-
 };
 #endif

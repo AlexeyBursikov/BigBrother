@@ -1,15 +1,15 @@
 #pragma once
 #include "ofMain.h"
-#include "../../FaceDetector.h"
+#include "../../abstract/FaceDetector.h"
 #include "../../faceplusplus/FacePlusPlusTypes.h"
 #include <json/json.h>
 
 namespace bbrother 
 {
-	class JsonParser 
+	class JsonParserFaceplusPlus
 	{
 	public:
-		JsonParser(const string& json);
+		JsonParserFaceplusPlus(const string& json);
 		bool parse();
 		bool valid();
 		bool parseSuccess() const;

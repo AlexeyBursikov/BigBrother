@@ -40,17 +40,11 @@
     <ClCompile Include="src\ui\screens\WaitScreen.cpp">
       <Filter>src\ui\screens</Filter>
     </ClCompile>
-    <ClCompile Include="src\facedetector\FaceDetector.cpp">
-      <Filter>src\facedetector</Filter>
-    </ClCompile>
     <ClCompile Include="src\person\Person.cpp">
       <Filter>src\person</Filter>
     </ClCompile>
     <ClCompile Include="src\interface\TestMainUIInterfaceLayout.cpp">
       <Filter>src\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusDetector.cpp">
-      <Filter>src\facedetector\faceplusplus</Filter>
     </ClCompile>
     <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusTypes.cpp">
       <Filter>src\facedetector\faceplusplus</Filter>
@@ -64,20 +58,38 @@
     <ClCompile Include="src\tools\http\ofxHttpUtils.cpp">
       <Filter>src\tools\http</Filter>
     </ClCompile>
-    <ClCompile Include="src\facedetector\faceplusplus\json\JsonParser.cpp">
-      <Filter>src\facedetector\faceplusplus\json</Filter>
-    </ClCompile>
     <ClCompile Include="src\interface\TestFacePlusPlusInterfaceLayout.cpp">
       <Filter>src\interface</Filter>
     </ClCompile>
-    <ClCompile Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.cpp">
+    <ClCompile Include="src\family\json\JsonFamilyParser.cpp">
+      <Filter>src\family\json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\abstract\FaceComparer.cpp">
+      <Filter>src\facedetector\abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\abstract\FaceDetector.cpp">
+      <Filter>src\facedetector\abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusComparer.cpp">
       <Filter>src\facedetector\faceplusplus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusDetector.cpp">
+      <Filter>src\facedetector\faceplusplus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\json\JsonParserFaceplusPlus.cpp">
+      <Filter>src\facedetector\faceplusplus\json</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\controller\FaceController.cpp">
+      <Filter>src\facedetector\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools\http\HttpService.cpp">
+      <Filter>src\tools\http</Filter>
+    </ClCompile>
+    <ClCompile Include="src\family\FamilyBaseController.cpp">
+      <Filter>src\family</Filter>
     </ClCompile>
     <ClCompile Include="src\family\FamilyBaseRequestHandler.cpp">
       <Filter>src\family</Filter>
-    </ClCompile>
-    <ClCompile Include="src\family\json\JsonFamilyParser.cpp">
-      <Filter>src\family\json</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +179,12 @@
     </Filter>
     <Filter Include="src\family\json">
       <UniqueIdentifier>{6bc7ad09-dbf5-420a-bef4-22a5858201e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\facedetector\controller">
+      <UniqueIdentifier>{f8938a76-43cf-46e3-8782-5976cbec49d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\facedetector\abstract">
+      <UniqueIdentifier>{8223e624-242b-4546-8f78-ad45e029f884}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -260,17 +278,11 @@
     <ClInclude Include="src\ui\screens\WaitScreen.h">
       <Filter>src\ui\screens</Filter>
     </ClInclude>
-    <ClInclude Include="src\facedetector\FaceDetector.h">
-      <Filter>src\facedetector</Filter>
-    </ClInclude>
     <ClInclude Include="src\person\Person.h">
       <Filter>src\person</Filter>
     </ClInclude>
     <ClInclude Include="src\interface\TestMainUIInterfaceLayout.h">
       <Filter>src\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusDetector.h">
-      <Filter>src\facedetector\faceplusplus</Filter>
     </ClInclude>
     <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusTypes.h">
       <Filter>src\facedetector\faceplusplus</Filter>
@@ -293,20 +305,38 @@
     <ClInclude Include="src\tools\http\ofxHttpUtils.h">
       <Filter>src\tools\http</Filter>
     </ClInclude>
-    <ClInclude Include="src\facedetector\faceplusplus\json\JsonParser.h">
-      <Filter>src\facedetector\faceplusplus\json</Filter>
-    </ClInclude>
     <ClInclude Include="src\interface\TestFacePlusPlusInterfaceLayout.h">
       <Filter>src\interface</Filter>
     </ClInclude>
-    <ClInclude Include="src\facedetector\faceplusplus\FacePPFaceSetHandler.h">
+    <ClInclude Include="src\family\json\JsonFamilyParser.h">
+      <Filter>src\family\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\abstract\FaceComparer.h">
+      <Filter>src\facedetector\abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\abstract\FaceDetector.h">
+      <Filter>src\facedetector\abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusComparer.h">
       <Filter>src\facedetector\faceplusplus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusDetector.h">
+      <Filter>src\facedetector\faceplusplus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\json\JsonParserFaceplusPlus.h">
+      <Filter>src\facedetector\faceplusplus\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\controller\FaceController.h">
+      <Filter>src\facedetector\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tools\http\HttpService.h">
+      <Filter>src\tools\http</Filter>
+    </ClInclude>
+    <ClInclude Include="src\family\FamilyBaseController.h">
+      <Filter>src\family</Filter>
     </ClInclude>
     <ClInclude Include="src\family\FamilyBaseRequestHandler.h">
       <Filter>src\family</Filter>
-    </ClInclude>
-    <ClInclude Include="src\family\json\JsonFamilyParser.h">
-      <Filter>src\family\json</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
