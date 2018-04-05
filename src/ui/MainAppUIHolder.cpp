@@ -9,6 +9,11 @@ MainAppUIHolder::MainAppUIHolder()
 	currentScreen = bbrother::BaseScreenPtr(new WaitScreen());
 }
 
+void MainAppUIHolder::newPersonAppear(PersonPtr person)
+{
+	
+}
+
 void MainAppUIHolder::update()
 {
 	currentScreen->update();

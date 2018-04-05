@@ -29,7 +29,7 @@ void FaceController::update()
 	facePlusPlusComparer->update();
 }
 
-void FaceController::findUser()
+void FaceController::newPersonAppear(PersonPtr person)
 {
 	//facePlusPlusDetector->searchFace();
 }

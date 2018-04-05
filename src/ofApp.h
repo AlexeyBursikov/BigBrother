@@ -6,6 +6,7 @@
 #include "interface/TestInterfaceLayout.h"
 #include "facedetector/controller/FaceController.h"
 #include "family/FamilyBaseRequestHandler.h"
+#include "person/Person.h"
 
 #define DEBUG_VERSION//
 
@@ -32,5 +33,16 @@ private:
 #endif
 
 	void onConfigLoadComplete();
-	void onInterfaceEvent( bbrother::InterfaceEventType& Event );
+	void onInterfaceEvent(bbrother::InterfaceEventType& Event );
+
+	void onNewPersonAppear(bbrother::TrackerPerson& trackerPerson);
+
+	void onPersonFaceDetect(bbrother::PersonPtr& person);
+	void onPersonFaceNotDetect(bbrother::PersonPtr& person);
+	void onPersonFoundInFaceSet(bbrother::PersonPtr& person);
+	void onPersonNotFoundInFaceSet(bbrother::PersonPtr& person);
+	void onPersonFoundInFamilyBase(bbrother::PersonPtr& person);
+	void onPersonNotFoundInFamilyBase(bbrother::PersonPtr& person);
+	void onFaceServiceError();
+
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "ofMain.h"
 #include "screens/BaseScreen.h"
+#include "../person/Person.h"
 
 namespace bbrother
 {
@@ -21,6 +22,7 @@ namespace bbrother
 		virtual void update();
 		virtual void draw();
 
+		void newPersonAppear(PersonPtr person);
 		virtual ~MainAppUIHolder();
 
 	private:

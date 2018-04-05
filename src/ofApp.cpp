@@ -35,22 +35,77 @@ void ofApp::setup()
 
 #endif
 
-	//tracker = bbrother::TrackerPtr(new KinectTracker());
+	tracker = bbrother::TrackerPtr(new KinectTracker());
+	ofAddListener(tracker->newPersonAppear, this, &ofApp::onNewPersonAppear);
+
+
 	//facedetector = bbrother::FaceDetectorPtr(new FacePlusPlusDetector());
 	faceController = FaceControllerPtr(new FaceController());
-	//@todo
-	//ofAddListener(facedetector->InterfaceEvent, this, &ofApp::onInterfaceEvent);
 
-	//mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
+	ofAddListener(faceController->serviceError, this, &ofApp::onFaceServiceError);
+
+	ofAddListener(faceController->personFaceDetect, this, &ofApp::onPersonFaceDetect);
+	ofAddListener(faceController->personFaceNotDetect, this, &ofApp::onPersonFaceNotDetect);
+	ofAddListener(faceController->personFoundInFaceSet, this, &ofApp::onPersonFoundInFaceSet);
+	ofAddListener(faceController->personNotFoundInFaceSet, this, &ofApp::onPersonNotFoundInFaceSet);
+	ofAddListener(faceController->personFoundInFamilyBase, this, &ofApp::onPersonFoundInFamilyBase);
+	ofAddListener(faceController->personNotFoundInFamilyBase, this, &ofApp::onPersonNotFoundInFamilyBase);
+
+
+	mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
 
 	//printerWorker = bbrother::PrinterWorkerPtr(new PrinterWorker());	
 	//tcpController = TcpControllerPtr(new TcpController());
 
 	config->load();
+}
+
+void ofApp::onNewPersonAppear(TrackerPerson& trackerPerson)
+{
+	PersonPtr person;
+	//person.rectangleImage = trackerPerson.image;
+	//person.id = generateID();
+
+	mainUI->newPersonAppear(person);
+	faceController->newPersonAppear(person);	
+}
+//--------------------------------------------------------------
+
+void ofApp::onPersonFaceDetect(PersonPtr& person)
+{
 
 }
 
-//--------------------------------------------------------------
+void ofApp::onPersonFaceNotDetect(PersonPtr& person)
+{
+
+}
+
+void ofApp::onPersonFoundInFaceSet(PersonPtr& person)
+{
+
+}
+
+void ofApp::onPersonNotFoundInFaceSet(PersonPtr& person)
+{
+
+}
+
+void ofApp::onPersonFoundInFamilyBase(PersonPtr& person)
+{
+
+}
+
+void ofApp::onPersonNotFoundInFamilyBase(PersonPtr& person)
+{
+
+}
+
+void ofApp::onFaceServiceError()
+{
+
+}
+
 void ofApp::onConfigLoadComplete()
 {
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Config load complete");

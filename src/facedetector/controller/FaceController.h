@@ -4,6 +4,7 @@
 #include "../../family/FamilyBaseController.h"
 #include "../faceplusplus/FacePlusPlusDetector.h"
 #include "../faceplusplus/FacePlusPlusComparer.h"
+#include "../../person/Person.h"
 
 namespace bbrother
 {
@@ -18,12 +19,23 @@ namespace bbrother
 		virtual void init(ConfigPtr config);
 		virtual void update();
 
+		void newPersonAppear(PersonPtr person);
+
+		ofEvent<PersonPtr> personFaceDetect;
+		ofEvent<PersonPtr> personFaceNotDetect;
+		ofEvent<PersonPtr> personFoundInFaceSet;
+		ofEvent<PersonPtr> personNotFoundInFaceSet;
+		ofEvent<PersonPtr> personFoundInFamilyBase;
+		ofEvent<PersonPtr> personNotFoundInFamilyBase;
+
+		ofEvent<void> serviceError;
+
 	private:
 		FamilyBaseControllerPtr familyBaseController;
 		FacePlusPlusDetectorPtr facePlusPlusDetector;
 		FacePlusPlusComparerPtr facePlusPlusComparer;
 
-		void findUser();
+		
 		void onFaceDetect();
 		void onFaceNotDetect();
 		void onFaceDetectorError();
