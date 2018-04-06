@@ -25,15 +25,6 @@
     <ClCompile Include="..\..\..\addons\ofxDatGui\src\libs\ofxSmartFont\ofxSmartFont.cpp">
       <Filter>addons\ofxDatGui\src\libs\ofxSmartFont</Filter>
     </ClCompile>
-    <ClCompile Include="src\interface\TestInterfaceLayout.cpp">
-      <Filter>src\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\interface\TestKinectInterfaceLayout.cpp">
-      <Filter>src\interface</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ui\MainAppUIHolder.cpp">
-      <Filter>src\ui</Filter>
-    </ClCompile>
     <ClCompile Include="src\ui\screens\BaseScreen.cpp">
       <Filter>src\ui\screens</Filter>
     </ClCompile>
@@ -42,9 +33,6 @@
     </ClCompile>
     <ClCompile Include="src\person\Person.cpp">
       <Filter>src\person</Filter>
-    </ClCompile>
-    <ClCompile Include="src\interface\TestMainUIInterfaceLayout.cpp">
-      <Filter>src\interface</Filter>
     </ClCompile>
     <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusTypes.cpp">
       <Filter>src\facedetector\faceplusplus</Filter>
@@ -57,9 +45,6 @@
     </ClCompile>
     <ClCompile Include="src\tools\http\ofxHttpUtils.cpp">
       <Filter>src\tools\http</Filter>
-    </ClCompile>
-    <ClCompile Include="src\interface\TestFacePlusPlusInterfaceLayout.cpp">
-      <Filter>src\interface</Filter>
     </ClCompile>
     <ClCompile Include="src\family\json\JsonFamilyParser.cpp">
       <Filter>src\family\json</Filter>
@@ -90,6 +75,21 @@
     </ClCompile>
     <ClCompile Include="src\facedetector\abstract\FaceSearcher.cpp">
       <Filter>src\facedetector\abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ui\ScreenController.cpp">
+      <Filter>src\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\debugUI\TestFacePlusPlusInterfaceLayout.cpp">
+      <Filter>src\debugUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\debugUI\TestInterfaceLayout.cpp">
+      <Filter>src\debugUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\debugUI\TestKinectInterfaceLayout.cpp">
+      <Filter>src\debugUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\debugUI\TestMainUIInterfaceLayout.cpp">
+      <Filter>src\debugUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +125,6 @@
     </Filter>
     <Filter Include="addons\ofxDatGui\src\themes">
       <UniqueIdentifier>{ff0391a3-73dc-47e1-91d3-2dab52a97ea4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\interface">
-      <UniqueIdentifier>{aefd5843-d747-4882-b2c6-8202fb9766a3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\ui">
       <UniqueIdentifier>{34ca6391-ba3d-4a2b-9eda-c89cbe58bd13}</UniqueIdentifier>
@@ -185,6 +182,9 @@
     </Filter>
     <Filter Include="src\facedetector\abstract">
       <UniqueIdentifier>{8223e624-242b-4546-8f78-ad45e029f884}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\debugUI">
+      <UniqueIdentifier>{9118a783-e22e-49c8-ad09-716d1612a544}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -263,15 +263,6 @@
     <ClInclude Include="..\..\..\addons\ofxDatGui\src\themes\ofxDatGuiThemes.h">
       <Filter>addons\ofxDatGui\src\themes</Filter>
     </ClInclude>
-    <ClInclude Include="src\interface\TestInterfaceLayout.h">
-      <Filter>src\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interface\TestKinectInterfaceLayout.h">
-      <Filter>src\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ui\MainAppUIHolder.h">
-      <Filter>src\ui</Filter>
-    </ClInclude>
     <ClInclude Include="src\ui\screens\BaseScreen.h">
       <Filter>src\ui\screens</Filter>
     </ClInclude>
@@ -280,9 +271,6 @@
     </ClInclude>
     <ClInclude Include="src\person\Person.h">
       <Filter>src\person</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interface\TestMainUIInterfaceLayout.h">
-      <Filter>src\interface</Filter>
     </ClInclude>
     <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusTypes.h">
       <Filter>src\facedetector\faceplusplus</Filter>
@@ -304,9 +292,6 @@
     </ClInclude>
     <ClInclude Include="src\tools\http\ofxHttpUtils.h">
       <Filter>src\tools\http</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interface\TestFacePlusPlusInterfaceLayout.h">
-      <Filter>src\interface</Filter>
     </ClInclude>
     <ClInclude Include="src\family\json\JsonFamilyParser.h">
       <Filter>src\family\json</Filter>
@@ -337,6 +322,21 @@
     </ClInclude>
     <ClInclude Include="src\facedetector\abstract\FaceSearcher.h">
       <Filter>src\facedetector\abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ui\ScreenController.h">
+      <Filter>src\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\debugUI\TestFacePlusPlusInterfaceLayout.h">
+      <Filter>src\debugUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\debugUI\TestInterfaceLayout.h">
+      <Filter>src\debugUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\debugUI\TestKinectInterfaceLayout.h">
+      <Filter>src\debugUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\debugUI\TestMainUIInterfaceLayout.h">
+      <Filter>src\debugUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

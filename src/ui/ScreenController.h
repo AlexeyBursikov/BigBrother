@@ -5,7 +5,7 @@
 
 namespace bbrother
 {
-	typedef ofPtr<class MainAppUIHolder> MainAppUIHolderPtr;
+	typedef ofPtr<class ScreenController> ScreenControllerPtr;
 
 	enum class ScreenState
 	{
@@ -15,15 +15,15 @@ namespace bbrother
 		Result
 	};
 
-	class MainAppUIHolder
+	class ScreenController
 	{
 	public:
-		MainAppUIHolder();
+		ScreenController();
 		virtual void update();
 		virtual void draw();
 
 		void newPersonAppear(PersonPtr person);
-		virtual ~MainAppUIHolder();
+		virtual ~ScreenController();
 
 	private:
 		BaseScreenPtr currentScreen;

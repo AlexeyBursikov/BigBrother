@@ -1,10 +1,10 @@
 #include "ofApp.h"
 #include "config/Config.h"
-#include "interface/TestKinectInterfaceLayout.h"
-#include "interface/TestMainUIInterfaceLayout.h"
+#include "debugUI/TestKinectInterfaceLayout.h"
+#include "debugUI/TestMainUIInterfaceLayout.h"
 #include "tracker/KinectTracker.h"
 #include "facedetector/faceplusplus/FacePlusPlusDetector.h"
-#include "interface/TestFacePlusPlusInterfaceLayout.h"
+#include "debugUI/TestFacePlusPlusInterfaceLayout.h"
 
 using namespace bbrother;
 
@@ -45,7 +45,7 @@ void ofApp::setup()
 	ofAddListener(faceController->personFoundInFamilyBase, this, &ofApp::onPersonFoundInFamilyBase);
 	ofAddListener(faceController->personNotFoundInFamilyBase, this, &ofApp::onPersonNotFoundInFamilyBase);
 	
-	mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
+	screenController = bbrother::ScreenControllerPtr(new ScreenController());
 
 	//printerWorker = bbrother::PrinterWorkerPtr(new PrinterWorker());	
 	//tcpController = TcpControllerPtr(new TcpController());
@@ -59,7 +59,7 @@ void ofApp::onNewPersonAppear(TrackerPerson& trackerPerson)
 	//person.rectangleImage = trackerPerson.image;
 	//person.id = generateID();
 
-	mainUI->newPersonAppear(person);
+	screenController->newPersonAppear(person);
 	faceController->newPersonAppear(person);	
 }
 //--------------------------------------------------------------
