@@ -11,12 +11,18 @@ namespace bbrother
 		TrackerOff
 	};
 
+	struct TrackerPerson
+	{
+		ofImage image;
+		ofRectangle rect;
+	};
+
 	class Tracker
 	{
 	public:
 		Tracker();
 
-		ofEvent<void> humanDetect;
+		ofEvent<TrackerPerson> newPersonAppear;
 		ofEvent<void> humanLost;
 		ofEvent<void> trackerError;
 

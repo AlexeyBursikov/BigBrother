@@ -6,54 +6,66 @@
     openFrameworks 0.06
 
 */
-#ifndef OFX_HTTP_TYPES
-#define OFX_HTTP_TYPES
-
-
-#define OFX_HTTP_GET  0
-#define OFX_HTTP_POST 1
-
+#pragma once
 #include "ofUtils.h"
 
-struct ofxHttpForm{
+enum class HTTPRequestMethod
+{
+	GET,
+	POST,
+	PUT,
+	_DELETE
+};
 
-
-	int method;
+struct ofxHttpForm
+{
+	HTTPRequestMethod method;
     std::string action;
 	std::string name;
 
-    ofxHttpForm(){
-    	method = OFX_HTTP_GET;
-    	expectBinaryResponse = false;
+    ofxHttpForm():method(HTTPRequestMethod::GET), expectBinaryResponse(false)
+	{
+    	
     }
-    ~ofxHttpForm(){
+
+    ~ofxHttpForm()
+	{
         clearFormFields();
     }
 
-	void addHeaderField(std::string id, std::string value) {
+	void addHeaderField(const std::string& id, const std::string& value)
+	{
 		headerIds.push_back(id);
 		headerValues.push_back(value);
 	}
 
 	// ----------------------------------------------------------------------
-	void addFormField(std::string id, std::string value){
-        formIds.push_back( id );
-        formValues.push_back( value );
+	void addFormField(const std::string& id, const std::string& value)
+	{
+        formIds.push_back(id);
+        formValues.push_back(value);
 	}
 	// ----------------------------------------------------------------------
-	void clearFormFields(){
+	void clearFormFields()
+	{
 	    formIds.clear();
         formValues.clear();
         formFiles.clear();
 	}
 	// ----------------------------------------------------------------------
-    void addFile(std::string fieldName, const std::string& path){
+    void addFile(const std::string& fieldName, const std::string& path)
+	{
 		formFiles[fieldName] = ofToDataPath(path);
 	}
 
-	std::string getFieldValue(std::string id){
-		for(unsigned int i=0;i<formIds.size();i++){
-			if(formIds[i]==id) return formValues[i];
+	std::string getFieldValue(std::string id)
+	{
+		for(unsigned int i=0; i < formIds.size(); i++)
+		{
+			if (formIds[i] == id)
+			{
+				return formValues[i];
+			}
 		}
 		return "";
 	}
@@ -65,5 +77,3 @@ struct ofxHttpForm{
 	std::map<std::string,std::string> formFiles;
 	bool expectBinaryResponse;
 };
-
-#endif

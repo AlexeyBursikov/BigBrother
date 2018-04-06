@@ -1,9 +1,9 @@
 #pragma once
 #include "ofMain.h"
-#include "../FaceDetector.h"
+#include "../abstract/FaceDetector.h"
 #include "FacePlusPlusTypes.h"
 
-#include "../../tools/http/ofxHttpUtils.h"
+#include "../../tools/http/HttpService.h"
 #include "../../tools/http/ofxHttpTypes.h"
 
 namespace bbrother
@@ -14,18 +14,22 @@ namespace bbrother
 	{
 	public:
 		FacePlusPlusDetector();
-		virtual void init(ConfigPtr config) override;
 		virtual ~FacePlusPlusDetector();
+
+		virtual void init(ConfigPtr config) override;
+		virtual void update() override;	
+		virtual void processImage(const string& path) override;
 
 	private:
 		Face face;
-		ofxHttpUtils httpUtils;
-		void makeRequest(const string& FACE_URL, const string& API_KEY, const string& API_SECRET, const string& filePath);
-		void newResponse(ofxHttpResponse & response);	
+		HttpService httpService;
 
+		void onServerResponse(const string& response);
+		
 		string FACE_URL;
 		string API_KEY;
 		string API_SECRET;
+		string path;
 	};
 }
 

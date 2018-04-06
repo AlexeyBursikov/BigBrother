@@ -3,6 +3,8 @@
 
 namespace bbrother
 {
+	typedef ofPtr<class Face> FacePtr;
+
 	struct FaceRectangle
 	{
 		FaceRectangle(float t, float l, float w, float h);
@@ -12,15 +14,25 @@ namespace bbrother
 		float left;
 		float width;
 		float height;
+
+		void print() const;
+	};
+
+	struct Beauty 
+	{
+		float maleScore;
+		float femaleScore;
 	};
 
 	struct FaceAttributes
 	{
-		string gender;
-		//HeadPose headpose;
-		//Beauty beauty;
-		//Eyegaze eyegaze;
+		string gender; //TODO: ENUM
+		int age;
+		string ethnicity; //TODO: ENUM
+		Beauty beauty;
+
 		void setBeauty(float maleScore, float femaleScore);
+		void print() const;
 	};
 
 	class Face
@@ -32,6 +44,8 @@ namespace bbrother
 
 	public:
 		Face();
+
+		void print() const;
 
 		void setToken(const string& token);
 		string getToken() const;
@@ -45,8 +59,7 @@ namespace bbrother
 		void setAttributes(const FaceAttributes& attributes);
 		FaceAttributes getAttributes() const;
 
-		/*Beauty getBeauty() const;*/
-
+		Beauty getBeauty() const;
 	};
 }
 
