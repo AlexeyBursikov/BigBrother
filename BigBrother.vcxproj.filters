@@ -64,14 +64,8 @@
     <ClCompile Include="src\family\json\JsonFamilyParser.cpp">
       <Filter>src\family\json</Filter>
     </ClCompile>
-    <ClCompile Include="src\facedetector\abstract\FaceComparer.cpp">
-      <Filter>src\facedetector\abstract</Filter>
-    </ClCompile>
     <ClCompile Include="src\facedetector\abstract\FaceDetector.cpp">
       <Filter>src\facedetector\abstract</Filter>
-    </ClCompile>
-    <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusComparer.cpp">
-      <Filter>src\facedetector\faceplusplus</Filter>
     </ClCompile>
     <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusDetector.cpp">
       <Filter>src\facedetector\faceplusplus</Filter>
@@ -90,6 +84,12 @@
     </ClCompile>
     <ClCompile Include="src\family\FamilyBaseRequestHandler.cpp">
       <Filter>src\family</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\faceplusplus\FacePlusPlusSearcher.cpp">
+      <Filter>src\facedetector\faceplusplus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\facedetector\abstract\FaceSearcher.cpp">
+      <Filter>src\facedetector\abstract</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,14 +311,8 @@
     <ClInclude Include="src\family\json\JsonFamilyParser.h">
       <Filter>src\family\json</Filter>
     </ClInclude>
-    <ClInclude Include="src\facedetector\abstract\FaceComparer.h">
-      <Filter>src\facedetector\abstract</Filter>
-    </ClInclude>
     <ClInclude Include="src\facedetector\abstract\FaceDetector.h">
       <Filter>src\facedetector\abstract</Filter>
-    </ClInclude>
-    <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusComparer.h">
-      <Filter>src\facedetector\faceplusplus</Filter>
     </ClInclude>
     <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusDetector.h">
       <Filter>src\facedetector\faceplusplus</Filter>
@@ -337,6 +331,12 @@
     </ClInclude>
     <ClInclude Include="src\family\FamilyBaseRequestHandler.h">
       <Filter>src\family</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\faceplusplus\FacePlusPlusSearcher.h">
+      <Filter>src\facedetector\faceplusplus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\facedetector\abstract\FaceSearcher.h">
+      <Filter>src\facedetector\abstract</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

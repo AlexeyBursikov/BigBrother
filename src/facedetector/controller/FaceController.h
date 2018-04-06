@@ -3,14 +3,14 @@
 #include "ofMain.h"
 #include "../../family/FamilyBaseController.h"
 #include "../faceplusplus/FacePlusPlusDetector.h"
-#include "../faceplusplus/FacePlusPlusComparer.h"
+#include "../faceplusplus/FacePlusPlusSearcher.h"
 #include "../../person/Person.h"
 
 namespace bbrother
 {
 	typedef ofPtr<class FaceController> FaceControllerPtr;
 
-	class FaceController //: public FaceDetector
+	class FaceController
 	{
 	public:
 		FaceController();
@@ -18,9 +18,7 @@ namespace bbrother
 
 		virtual void init(ConfigPtr config);
 		virtual void update();
-
-		void newPersonAppear(PersonPtr person);
-
+	
 		ofEvent<PersonPtr> personFaceDetect;
 		ofEvent<PersonPtr> personFaceNotDetect;
 		ofEvent<PersonPtr> personFoundInFaceSet;
@@ -30,22 +28,20 @@ namespace bbrother
 
 		ofEvent<void> serviceError;
 
+		void newPersonAppear(PersonPtr person);
+
 	private:
 		FamilyBaseControllerPtr familyBaseController;
 		FacePlusPlusDetectorPtr facePlusPlusDetector;
-		FacePlusPlusComparerPtr facePlusPlusComparer;
-
+		FacePlusPlusSearcherPtr facePlusPlusSearcher;
 		
-		void onFaceDetect();
+		void onFaceDetect(PersonPtr person);
 		void onFaceNotDetect();
 		void onFaceDetectorError();
 
-		void onFaceFindInFaceSet();
-
-		void onFaceNotFindInFaceSet();
-		void onFaceComparerError();
+		void onFaceFoundInFaceSet(PersonPtr person);
+		void onFaceNotFoundInFaceSet();
+		void onFaceSearchError();
 	};
 }
-
-
 

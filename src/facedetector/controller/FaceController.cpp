@@ -6,43 +6,39 @@ FaceController::FaceController()
 {
 	familyBaseController = FamilyBaseControllerPtr(new FamilyBaseController());
 	facePlusPlusDetector = FacePlusPlusDetectorPtr(new FacePlusPlusDetector());
-	facePlusPlusComparer = FacePlusPlusComparerPtr(new FacePlusPlusComparer());	
+	facePlusPlusSearcher = FacePlusPlusSearcherPtr(new FacePlusPlusSearcher());
 }
 
 void FaceController::init(ConfigPtr config)
 {
 	familyBaseController->init(config);
 	facePlusPlusDetector->init(config);
-	facePlusPlusComparer->init(config);
-
-	facePlusPlusDetector->processImage("face.jpg");
-	//facePlusPlusDetector->processImage("face.jpg");
-	//facePlusPlusDetector->processImage("face.jpg");
-	//facePlusPlusDetector->processImage("face.jpg");
-	//facePlusPlusDetector->processImage("face.jpg");
 }
 
 void FaceController::update()
 {
 	facePlusPlusDetector->update();
 	familyBaseController->update();
-	facePlusPlusComparer->update();
 }
 
 void FaceController::newPersonAppear(PersonPtr person)
 {
-	//facePlusPlusDetector->searchFace();
+	facePlusPlusDetector->processImage("face.jpg");
+
 }
 
-void FaceController::onFaceDetect()
+
+void FaceController::onFaceDetect(PersonPtr person)
 {
-	//familyBigBrotherController->getFaceSets();
-	//facePlusPlusComparer->searchInFaceSet();
+	//search in face set
+	//....
+
+	ofNotifyEvent(personFoundInFaceSet, person);
 }
 
 void FaceController::onFaceNotDetect()
 {
-
+	//face not detect on image
 }
 
 void FaceController::onFaceDetectorError()
@@ -50,21 +46,25 @@ void FaceController::onFaceDetectorError()
 
 }
 
-void FaceController::onFaceFindInFaceSet()
+
+
+void FaceController::onFaceFoundInFaceSet(PersonPtr person)
 {
-	//familyBigBrotherController->getUser();
-	//notify userInfo
+	//get user info from family base
+	//....
 }
 
-void FaceController::onFaceNotFindInFaceSet()
-{
-
-}
-
-void FaceController::onFaceComparerError()
+void FaceController::onFaceNotFoundInFaceSet()
 {
 
 }
+
+void FaceController::onFaceSearchError()
+{
+
+}
+
+
 
 FaceController::~FaceController()
 {

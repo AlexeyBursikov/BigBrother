@@ -31,27 +31,20 @@ void ofApp::setup()
 	testMainUIInterfaceLayout->setVisibility(true);
 	testMainUIInterfaceLayout->setConfig( config );
 	ofAddListener(testMainUIInterfaceLayout->InterfaceEvent, this, &ofApp::onInterfaceEvent);
-
-
 #endif
 
 	tracker = bbrother::TrackerPtr(new KinectTracker());
 	ofAddListener(tracker->newPersonAppear, this, &ofApp::onNewPersonAppear);
 
-
-	//facedetector = bbrother::FaceDetectorPtr(new FacePlusPlusDetector());
 	faceController = FaceControllerPtr(new FaceController());
-
 	ofAddListener(faceController->serviceError, this, &ofApp::onFaceServiceError);
-
 	ofAddListener(faceController->personFaceDetect, this, &ofApp::onPersonFaceDetect);
 	ofAddListener(faceController->personFaceNotDetect, this, &ofApp::onPersonFaceNotDetect);
 	ofAddListener(faceController->personFoundInFaceSet, this, &ofApp::onPersonFoundInFaceSet);
 	ofAddListener(faceController->personNotFoundInFaceSet, this, &ofApp::onPersonNotFoundInFaceSet);
 	ofAddListener(faceController->personFoundInFamilyBase, this, &ofApp::onPersonFoundInFamilyBase);
 	ofAddListener(faceController->personNotFoundInFamilyBase, this, &ofApp::onPersonNotFoundInFamilyBase);
-
-
+	
 	mainUI = bbrother::MainAppUIHolderPtr(new MainAppUIHolder());
 
 	//printerWorker = bbrother::PrinterWorkerPtr(new PrinterWorker());	
@@ -108,6 +101,8 @@ void ofApp::onFaceServiceError()
 
 void ofApp::onConfigLoadComplete()
 {
+	// entry point....
+
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Config load complete");
 
 	faceController->init(config);
@@ -162,7 +157,8 @@ void ofApp::draw()
 }
 
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h)
+{
 
 }
 

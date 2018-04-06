@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "../abstract/FaceComparer.h"
+#include "../abstract/FaceSearcher.h"
 #include "FacePlusPlusTypes.h"
 
 #include "../../tools/http/ofxHttpUtils.h"
@@ -8,15 +8,15 @@
 
 namespace bbrother
 {
-	typedef ofPtr<class FacePlusPlusComparer> FacePlusPlusComparerPtr;
+	typedef ofPtr<class FacePlusPlusSearcher> FacePlusPlusSearcherPtr;
 
-	class FacePlusPlusComparer : public FaceComparer
+	class FacePlusPlusSearcher : public FaceSearcher
 	{
 	public:
-		FacePlusPlusComparer();
+		FacePlusPlusSearcher();
 		virtual void init(ConfigPtr config) override;
 		virtual void update() override;
-		virtual ~FacePlusPlusComparer();
+		virtual ~FacePlusPlusSearcher();
 	
 	};
 }

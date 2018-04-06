@@ -4,15 +4,15 @@
 
 namespace bbrother
 {
-	typedef ofPtr<class FaceComparer> FaceComparerPtr;
+	typedef ofPtr<class FaceSearcher> FaceSearcherPtr;
 
-	class FaceComparer
+	class FaceSearcher
 	{
 	public:	
-		FaceComparer();
+		FaceSearcher();
 		
 		virtual void init(ConfigPtr config) = 0;
 		virtual void update() = 0;		
-		virtual ~FaceComparer();
+		virtual ~FaceSearcher();
 	};
 }

@@ -38,9 +38,9 @@ struct ofxHttpResponse
 		{
 			timestamp=pocoResponse.getDate();
 		}
-		catch(Poco::Exception & exc)
+		catch(Poco::Exception& exc)
 		{
-
+			cout << exc.what() << endl;
 		}
 
 		reasonForStatus=pocoResponse.getReasonForStatus(pocoResponse.getStatus());
