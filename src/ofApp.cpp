@@ -107,6 +107,9 @@ void ofApp::onConfigLoadComplete()
 
 	faceController->init(config);
 
+	tracker->init(config);
+	tracker->start();
+
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "Start application...");
 }
 
@@ -136,6 +139,7 @@ void ofApp::update()
 	//tracker->update();
 	//mainUI->update();
 	faceController->update();
+	tracker->update();
 
 #ifdef DEBUG_VERSION
 	//testKinectInterfaceLayout->update();
@@ -146,7 +150,7 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	//tracker->draw();
+	tracker->draw();
 	//mainUI->draw();
 
 #ifdef DEBUG_VERSION
