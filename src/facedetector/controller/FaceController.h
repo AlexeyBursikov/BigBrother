@@ -44,4 +44,3 @@ namespace bbrother
 		void onFaceSearchError();
 	};
 }
-

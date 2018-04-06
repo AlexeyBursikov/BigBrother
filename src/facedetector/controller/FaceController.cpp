@@ -24,9 +24,7 @@ void FaceController::update()
 void FaceController::newPersonAppear(PersonPtr person)
 {
 	facePlusPlusDetector->processImage("face.jpg");
-
 }
-
 
 void FaceController::onFaceDetect(PersonPtr person)
 {
