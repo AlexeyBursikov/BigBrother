@@ -10,3 +10,12 @@ int main( ){
 	// pass in width and height too:
 	ofRunApp(new ofApp());
 }
+/*
+Добавил классы
+ScreenController
+WaitScreen
+WorkScreen
+BaseContainer
+BaseCard
+Cloud //фоновая анимация
+*/
