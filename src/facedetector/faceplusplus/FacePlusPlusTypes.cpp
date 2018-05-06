@@ -15,8 +15,8 @@ FaceRectangle::FaceRectangle()
 
 void FaceAttributes::setBeauty(float maleScore, float femaleScore)
 {
-	//beauty.setMaleScore(maleScore);
-	//beauty.setFemaleScore(femaleScore);
+	beauty.maleScore = maleScore;
+	beauty.femaleScore = femaleScore;
 }
 
 Face::Face()
@@ -59,12 +59,36 @@ void Face::setAttributes(const FaceAttributes& attributes)
 	this->attributes = attributes;
 }
 
+void Face::print() const 
+{
+	attributes.print();
+	faceRectangle.print();
+	std::cout << "token: " << token << std::endl;
+}
+
+void FaceRectangle::print() const
+{
+	std::cout << "height: " << height << std::endl;
+	std::cout << "top: " << top << std::endl;
+	std::cout << "left: " << left << std::endl;
+	std::cout << "width: " << width << std::endl;
+}
+
+void FaceAttributes::print() const 
+{
+	std::cout << "gender: " << gender << std::endl;
+	std::cout << "age: " << age << std::endl;
+	std::cout << "ethnity: " << ethnicity << std::endl;
+	std::cout << "beauty female: " << beauty.femaleScore << std::endl;
+	std::cout << "beauty male: " << beauty.maleScore << std::endl;
+}
+
 FaceAttributes Face::getAttributes() const
 {
 	return attributes;
 }
 
-/*Beauty Face::getBeauty() const
+Beauty Face::getBeauty() const
 {
-return attributes.beauty;
-}*/
+	return attributes.beauty;
+}

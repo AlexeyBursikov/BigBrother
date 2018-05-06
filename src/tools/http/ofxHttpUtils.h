@@ -10,7 +10,6 @@
 #ifndef _OFX_HTTP_UTILS
 #define _OFX_HTTP_UTILS
 
-
 #include <iostream>
 #include <queue>
 #include <istream>
@@ -29,14 +28,21 @@
 class ofxHttpListener;
 class ofxHttpEventManager;
 
-struct ofxHttpResponse{
-    ofxHttpResponse(Poco::Net::HTTPResponse& pocoResponse, std::istream &bodyStream, std::string turl, bool binary=false){
+struct ofxHttpResponse
+{
+    ofxHttpResponse(Poco::Net::HTTPResponse& pocoResponse, std::istream &bodyStream, std::string turl, bool binary=false)
+	{
 		status=pocoResponse.getStatus();
-		try{
-			timestamp=pocoResponse.getDate();
-		}catch(Poco::Exception & exc){
 
+		try
+		{
+			timestamp=pocoResponse.getDate();
 		}
+		catch(Poco::Exception& exc)
+		{
+			cout << exc.what() << endl;
+		}
+
 		reasonForStatus=pocoResponse.getReasonForStatus(pocoResponse.getStatus());
 		contentType = pocoResponse.getContentType();
 		responseBody.set(bodyStream);
@@ -45,10 +51,13 @@ struct ofxHttpResponse{
         pocoResponse.getCookies(cookies);
 	}
 
-	ofxHttpResponse(){}
+	ofxHttpResponse()
+	{
+	}
 
-	std::string getURLFilename(){
-		return url.substr(url.rfind('/')+1);
+	std::string getURLFilename() const
+	{
+		return url.substr(url.rfind('/') + 1);
 	}
 
 	int status; 				// return code for the response ie: 200 = OK
@@ -61,15 +70,14 @@ struct ofxHttpResponse{
 	std::string location;
 };
 
-class ofxHttpUtils : public ofThread{
-
+class ofxHttpUtils : public ofThread
+{
 	public:
-
 		ofxHttpUtils();
 		~ofxHttpUtils();
+
 		//-------------------------------
 		// non blocking functions
-
 		void addForm(ofxHttpForm form);
 		void addUrl(std::string url);
 
@@ -77,8 +85,7 @@ class ofxHttpUtils : public ofThread{
 		// blocking functions
 		ofxHttpResponse submitForm(ofxHttpForm form);
 		ofxHttpResponse getUrl(std::string url);
-		ofxHttpResponse postData(std::string url, const ofBuffer & data, std::string contentType="");
-
+	
         int getQueueLength();
         void clearQueue();
 
@@ -91,44 +98,44 @@ class ofxHttpUtils : public ofThread{
 		ofEvent<ofxHttpResponse> newResponseEvent;
 
         // other stuff-------------------
-        void setTimeoutSeconds(int t){
-            timeoutSeconds = t;
+        void setTimeoutSeconds(int value)
+		{
+            timeoutSeconds = value;
         }
-        void setMaxRetries(int val){ // -1 means an infinite number of retries
-            maxRetries = val;
+        void setMaxRetries(int value)
+		{ 
+			// -1 means an infinite number of retries
+            maxRetries = value;
         }
-        void setVerbose(bool v){
-            verbose = v;
+        void setVerbose(bool value)
+		{
+            verbose = value;
         }
 
         void sendReceivedCookies();
-
         void setBasicAuthentication(std::string user, std::string password);
-
 
 		void start();
         void stop();
 
     protected:
-
 		bool verbose;
         int timeoutSeconds;
         int maxRetries; 
-        bool sendCookies;
-    
+        bool sendCookies;    
         int nbOfTries;
 
 		//--------------------------------
 		// http utils
-		std::string generateUrl(ofxHttpForm & form);
-		ofxHttpResponse doPostForm(ofxHttpForm & form);
-
+		std::string generateUrl(ofxHttpForm& form);
+		ofxHttpResponse doPostForm(ofxHttpForm& form);
+		ofxHttpResponse makeRequest(ofxHttpForm& form, const std::string& method);
+		
 		std::queue<ofxHttpForm> forms;
 		std::vector<Poco::Net::HTTPCookie> cookies;
 		Poco::Net::HTTPBasicCredentials auth;
 		Poco::Condition condition;
 
 		static bool initialized;
-
 };
 #endif
