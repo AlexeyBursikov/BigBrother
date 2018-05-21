@@ -26,7 +26,6 @@ void BaseContainer::update()
 		num++;
 	}
 
-	//обновляем карточки
 	for (auto i = cards.begin(); i != cards.end(); i++) {
 		i->get()->update();
 	}
