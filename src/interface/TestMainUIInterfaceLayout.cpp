@@ -36,10 +36,10 @@ void TestMainUIInterfaceLayout::draw()
 
 void TestMainUIInterfaceLayout::screen1ButtonClicked(ofxDatGuiButtonEvent event)
 {
-	int a = std::rand();
+	int id = std::rand();
 	ofImage pic;
 	std::string name;
-	switch (a%6) {
+	switch (id%6) {
 	case 0:
 		pic.load("images/photo0.jpg");
 		name = "";
@@ -70,7 +70,7 @@ void TestMainUIInterfaceLayout::screen1ButtonClicked(ofxDatGuiButtonEvent event)
 	default:
 		break;
 	}
-	PersonPtr newPer(new Person(a, pic));
+	PersonPtr newPer(new Person(id, pic));
 	newPer->faceData.name = name;
 
 	MyEvent myevent(InterfaceEventType::NewPersonAppear, newPer);

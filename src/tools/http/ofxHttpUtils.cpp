@@ -36,7 +36,8 @@ using namespace Poco::Net;
 bool ofxHttpUtils::initialized = false;
 
 // ----------------------------------------------------------------------
-ofxHttpUtils::ofxHttpUtils(){
+ofxHttpUtils::ofxHttpUtils()
+{
     timeoutSeconds = 2;
     maxRetries = -1; // -1 means an infinite number of retries
     nbOfTries = 0;
@@ -44,7 +45,8 @@ ofxHttpUtils::ofxHttpUtils(){
     sendCookies = true;
     //start();
 
-    if(!initialized){
+    if(!initialized)
+	{
     	SharedPtr<PrivateKeyPassphraseHandler> pConsoleHandler = new KeyConsoleHandler(false);
     	SharedPtr<InvalidCertificateHandler> pInvalidCertHandler = new ConsoleCertificateHandler(true);
     	Context::Ptr pContext = new Context(Context::CLIENT_USE, "", Context::VERIFY_NONE);
@@ -55,6 +57,7 @@ ofxHttpUtils::ofxHttpUtils(){
 
 // ----------------------------------------------------------------------
 ofxHttpUtils::~ofxHttpUtils(){
+	waitForThread(true);
 }
 
 // ----------------------------------------------------------------------
@@ -82,30 +85,49 @@ void ofxHttpUtils::stop() {
 }
 
 // ----------------------------------------------------------------------
-void ofxHttpUtils::threadedFunction(){
+void ofxHttpUtils::threadedFunction()
+{
 	lock();
-    while( isThreadRunning() ){
-    	if(forms.size()>0){
+    while( isThreadRunning())
+	{
+    	if(forms.size() > 0)
+		{
 			ofxHttpForm form = forms.front();
 			ofxHttpResponse response;
+
 	    	unlock();
-			if(form.method==OFX_HTTP_POST){
-				response = doPostForm(form);
-				ofLogVerbose("ofxHttpUtils") << "(thread running) form submitted (post): "  << form.name;
-			}else{
-				string url = generateUrl(form);
-				ofLogVerbose("ofxHttpUtils") << "form submitted (get):" << form.name;
-				response = getUrl(url);
+		
+			ofLogVerbose("ofxHttpUtils") << "form submitted (get):" << form.name;
+			if (form.method == HTTPRequestMethod::POST)
+			{
+				response = makeRequest(form, HTTPRequest::HTTP_POST);
 			}
+			else if (form.method == HTTPRequestMethod::GET)
+			{
+				response = makeRequest(form, HTTPRequest::HTTP_GET);// getUrl(url);
+			}
+			else if (form.method == HTTPRequestMethod::PUT)
+			{
+				response = makeRequest(form, HTTPRequest::HTTP_PUT);
+			}
+			else if (form.method == HTTPRequestMethod::_DELETE)
+			{
+				response = makeRequest(form, HTTPRequest::HTTP_DELETE);
+			}				
+		
     		lock();
-            if(response.status!=-1) {
+
+            if(response.status != -1)
+			{
                 nbOfTries = 0;
                 forms.pop();
             }
-            else if (maxRetries >= 0) {
+            else if (maxRetries >= 0) 
+			{
                 nbOfTries++;
                 ofLogWarning("ofxHttpUtils") << "The resquest did not succeed. We will try again " << maxRetries - nbOfTries << " time(s)";
-                if (nbOfTries >= maxRetries) {
+                if (nbOfTries >= maxRetries)
+				{
                     ofLogError("ofxHttpUtils") << "We pop that resquest. Too much retries -- " << form.action.c_str();
                     nbOfTries = 0;
                     forms.pop();
@@ -113,7 +135,8 @@ void ofxHttpUtils::threadedFunction(){
             }
             
     	}
-    	if(forms.empty()){
+    	if(forms.empty())
+		{
     	    ofLogVerbose("ofxHttpUtils") << "empty, waiting";
     		condition.wait(mutex);
     	}
@@ -135,7 +158,8 @@ void ofxHttpUtils::clearQueue(){
 }
 
 // ----------------------------------------------------------------------
-string ofxHttpUtils::generateUrl(ofxHttpForm & form) {
+string ofxHttpUtils::generateUrl(ofxHttpForm& form)
+{
     // url to send to
     string url = form.action;
 
@@ -153,78 +177,105 @@ string ofxHttpUtils::generateUrl(ofxHttpForm & form) {
 }
 
 // ----------------------------------------------------------------------
-ofxHttpResponse ofxHttpUtils::postData(string url, const ofBuffer & data,  string contentType){
+ofxHttpResponse ofxHttpUtils::makeRequest(ofxHttpForm & form, const std::string& method)
+{
 	ofxHttpResponse response;
-	try{
-		URI uri( url.c_str() );
+
+	try {
+		URI uri(form.action.c_str());
 		std::string path(uri.getPathAndQuery());
 		if (path.empty()) path = "/";
 
 		//HTTPClientSession session(uri.getHost(), uri.getPort());
-		HTTPRequest req(HTTPRequest::HTTP_POST, path, HTTPMessage::HTTP_1_1);
-		if(auth.getUsername()!="") auth.authenticate(req);
+		HTTPRequest req(method, path, HTTPMessage::HTTP_1_1);
+		if (auth.getUsername() != "") auth.authenticate(req);
 
-		if(sendCookies){
-			for(unsigned i=0; i<cookies.size(); i++){
+		if (sendCookies) {
+			for (unsigned i = 0; i<cookies.size(); i++) {
 				NameValueCollection reqCookies;
-				reqCookies.add(cookies[i].getName(),cookies[i].getValue());
+				reqCookies.add(cookies[i].getName(), cookies[i].getValue());
 				req.setCookies(reqCookies);
 			}
 		}
 
-		if(contentType!=""){
-			req.setContentType(contentType);
+		for (unsigned int i = 0; i < form.headerIds.size(); ++i) {
+			const std::string name = form.headerIds[i].c_str();
+			const std::string val = form.headerValues[i].c_str();
+			req.set(name, val);
 		}
 
-		req.setContentLength(data.size());
-
 		HTTPResponse res;
+		HTMLForm pocoForm;
+		// create the form data to send
+		if (form.formFiles.size()>0) {
+			pocoForm.setEncoding(HTMLForm::ENCODING_MULTIPART);
+		}
+		else {
+			pocoForm.setEncoding(HTMLForm::ENCODING_URL);
+		}
+
+		// form values
+		for (unsigned i = 0; i<form.formIds.size(); i++) {
+			const std::string name = form.formIds[i].c_str();
+			const std::string val = form.formValues[i].c_str();
+			pocoForm.set(name, val);
+		}
+
+		map<string, string>::iterator it;
+		for (it = form.formFiles.begin(); it != form.formFiles.end(); it++) {
+			string fileName = it->second.substr(it->second.find_last_of('/') + 1);
+			ofLogVerbose("ofxHttpUtils") << "adding file: " << fileName << " path: " << it->second;
+			pocoForm.addPart(it->first, new FilePartSource(it->second));
+		}
+
+		pocoForm.prepareSubmit(req);
+
 		ofPtr<HTTPSession> session;
 		istream * rs;
-		if(uri.getScheme()=="https"){
+		if (uri.getScheme() == "https") {
 			HTTPSClientSession * httpsSession = new HTTPSClientSession(uri.getHost(), uri.getPort());//,context);
-			httpsSession->setTimeout(Poco::Timespan(20,0));
-			httpsSession->sendRequest(req) << data;
+			httpsSession->setTimeout(Poco::Timespan(20, 0));
+			pocoForm.write(httpsSession->sendRequest(req));
 			rs = &httpsSession->receiveResponse(res);
 			session = ofPtr<HTTPSession>(httpsSession);
-		}else{
+		}
+		else {
 			HTTPClientSession * httpSession = new HTTPClientSession(uri.getHost(), uri.getPort());
-			httpSession->setTimeout(Poco::Timespan(20,0));
-			httpSession->sendRequest(req) << data;
+			httpSession->setTimeout(Poco::Timespan(20, 0));
+			pocoForm.write(httpSession->sendRequest(req));
 			rs = &httpSession->receiveResponse(res);
 			session = ofPtr<HTTPSession>(httpSession);
 		}
 
-		response = ofxHttpResponse(res, *rs, url);
+		response = ofxHttpResponse(res, *rs, form.action);
 
-		if(sendCookies){
-			cookies.insert(cookies.begin(),response.cookies.begin(),response.cookies.end());
+		if (sendCookies) {
+			cookies.insert(cookies.begin(), response.cookies.begin(), response.cookies.end());
 		}
 
-		if(response.status>=300 && response.status<400){
+		if (response.status >= 300 && response.status<400) {
 			Poco::URI uri(req.getURI());
 			uri.resolve(res.get("Location"));
 			response.location = uri.toString();
 		}
 
 		ofNotifyEvent(newResponseEvent, response, this);
-	}catch (Exception& exc){
+	}
+	catch (Exception& exc) 
+	{
+		ofLogError("ofxHttpUtils") << "ofxHttpUtils error doPostForm -- " << form.action.c_str();
+		ofLogError("ofxHttpUtils") << exc.displayText();
+		response.status = -1;
+		response.reasonForStatus = exc.displayText();
+		ofNotifyEvent(newResponseEvent, response, this);
+	}
 
-    	ofLogError("ofxHttpUtils") << "ofxHttpUtils error postData --";
-
-        //ofNotifyEvent(notifyNewError, "time out", this);
-
-        // for now print error, need to broadcast a response
-    	ofLogError("ofxHttpUtils") << exc.displayText();
-        response.status = -1;
-        response.reasonForStatus = exc.displayText();
-    	ofNotifyEvent(newResponseEvent, response, this);
-
-    }
 	return response;
 }
 
+
 // ----------------------------------------------------------------------
+
 ofxHttpResponse ofxHttpUtils::doPostForm(ofxHttpForm & form){
 	ofxHttpResponse response;
     
@@ -394,7 +445,7 @@ ofxHttpResponse ofxHttpUtils::getUrl(string url){
 void ofxHttpUtils::addUrl(string url){
 	ofxHttpForm form;
 	form.action=url;
-	form.method=OFX_HTTP_GET;
+	form.method= HTTPRequestMethod::GET;
     form.name=form.action;
 
 	addForm(form);
