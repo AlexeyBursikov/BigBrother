@@ -20,7 +20,7 @@ BaseCard::BaseCard(PersonPtr _person)
 	person = _person;
 	creationTime = ofGetElapsedTimef();
 
-	font.load("ofxbraitsch/fonts/Starjout.ttf", 16);
+	font.load("ofxbraitsch/fonts/Starjout.ttf", 12);
 	ofLog(ofLogLevel::OF_LOG_NOTICE, "BaseCard init");
 }
 

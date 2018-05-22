@@ -40,5 +40,7 @@ void MainAppUIHolder::onInterfaceEvent(bbrother::InterfaceEventType& Event)
 	case InterfaceEventType::PersonRecognized:
 		screenController->personRecognized(PersonPtr(new Person(iddel++)));
 		break;
+	default:
+		break;
 	}
 }
