@@ -33,7 +33,7 @@ namespace bbrother
 	public:
 		TestInterfaceLayout();
 
-		ofEvent<InterfaceEventType> InterfaceEvent;
+		ofEvent<MyEvent> InterfaceEvent;
 
 		virtual void update();
 		virtual void draw();

@@ -64,7 +64,7 @@ void BaseContainer::addCard(BaseCardPtr card)
 void BaseContainer::removeCard(BaseCardPtr card)
 {
 	for (auto i = cards.begin(); i != cards.end();) {
-		if (i->get()->getPerson()->getId() == card->getPerson()->getId()) {
+		if (i->get()->getPerson()->id == card->getPerson()->id) {
 			cards.erase(i);
 			i = cards.begin();
 		}
